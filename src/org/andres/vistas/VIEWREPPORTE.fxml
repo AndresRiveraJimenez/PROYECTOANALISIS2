@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="453.0" prefWidth="1103.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorClientes">
+   <children>
+      <Pane prefHeight="46.0" prefWidth="1102.0" style="-fx-background-color: #3d9bc2;">
+         <children>
+            <Label layoutX="1006.0" layoutY="20.0" prefHeight="27.0" prefWidth="91.0" text="usuario" textFill="#f8f8f8">
+               <font>
+                  <Font name="Comfortaa Regular" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="5.0" text="SB" textFill="WHITE">
+               <font>
+                  <Font name="Comfortaa Regular" size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="490.0" layoutY="16.0" text="REPORTES" textFill="WHITE">
+               <font>
+                  <Font name="Comfortaa Regular" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="44.0" fitWidth="64.0" layoutX="2.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Downloads/BACK.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="895.0" layoutY="61.0" text="DETALLES">
+         <font>
+            <Font name="Comfortaa Regular" size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutX="768.0" layoutY="89.0" prefHeight="4.0" prefWidth="328.0" />
+      <Hyperlink layoutX="135.0" layoutY="92.0" prefHeight="23.0" prefWidth="341.0" text="CLIENTES" />
+      <Hyperlink layoutX="133.0" layoutY="124.0" prefHeight="23.0" prefWidth="341.0" text="TECNICOS" />
+      <Hyperlink layoutX="137.0" layoutY="158.0" prefHeight="23.0" prefWidth="341.0" text="BOLETAS" />
+      <Hyperlink layoutX="137.0" layoutY="189.0" prefHeight="23.0" prefWidth="341.0" text="ASIGNACION DE TRABAJOS" />
+      <Hyperlink layoutX="139.0" layoutY="218.0" prefHeight="23.0" prefWidth="341.0" text="RENDIMIENTO TECNICO" />
+   </children>
+</AnchorPane>

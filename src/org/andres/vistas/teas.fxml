@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="667.0" prefWidth="1128.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorVentanaPrincipal">
+   <children>
+      <Pane prefHeight="52.0" prefWidth="1136.0" style="-fx-background-color: #3d9bc2;">
+         <children>
+            <Label layoutX="976.0" layoutY="20.0" prefHeight="32.0" prefWidth="111.0" text="User" textFill="#f8f8f8">
+               <font>
+                  <Font name="Comfortaa Regular" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgFondo" fitHeight="614.0" fitWidth="1227.0" layoutX="42.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/FONDO%20PRINCIPAL.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="202.0" layoutY="86.0" onAction="#mostrarClientes" onMouseClicked="#mostrarClientes" opacity="0.72" prefHeight="247.0" prefWidth="250.0" style="-fx-background-color: #ff9f00;" text="&#10;&#10; &#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="224.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/ICONO%20CLIENTE%202018.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="460.0" layoutY="86.0" opacity="0.72" prefHeight="247.0" prefWidth="250.0" style="-fx-background-color: #8ac349;" text="&#10;&#10;&#10;&#10;&#10;&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="224.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/ICONO%20tecnico%202018.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="719.0" layoutY="86.0" opacity="0.72" prefHeight="247.0" prefWidth="250.0" style="-fx-background-color: #02746c;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/ICONO%20BOLETA%202018%204.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" disable="true" ellipsisString="" layoutX="202.0" layoutY="343.0" opacity="0.72" prefHeight="247.0" prefWidth="250.0" style="-fx-background-color: #1c344e;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="224.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/ICONO%20DASHBOARD%202018.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="460.0" layoutY="343.0" opacity="0.72" prefHeight="247.0" prefWidth="250.0" style="-fx-background-color: #ef5282;" text="CLIENTES" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="224.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/ICONO%20REPORTE%202018.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="719.0" layoutY="346.0" opacity="0.72" prefHeight="244.0" prefWidth="250.0" style="-fx-background-color: #05518d;" text="&#10;&#10;&#10;&#10;&#10;" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="224.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/ICON%20USER%202018.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="300.0" layoutY="269.0" prefHeight="17.0" prefWidth="56.0" text="Clientes" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="485.0" layoutY="282.0" prefHeight="9.0" prefWidth="200.0" />
+      <Label layoutX="555.0" layoutY="269.0" prefHeight="17.0" prefWidth="56.0" text="Tecnicos" textAlignment="JUSTIFY" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="233.0" layoutY="282.0" prefHeight="9.0" prefWidth="200.0" />
+      <Separator layoutX="744.0" layoutY="281.0" prefHeight="9.0" prefWidth="200.0" />
+      <Label layoutX="820.0" layoutY="268.0" prefHeight="17.0" prefWidth="56.0" text="Boletas" textAlignment="JUSTIFY" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="295.0" layoutY="533.0" prefHeight="17.0" prefWidth="72.0" text="Dashboard" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="230.0" layoutY="546.0" prefHeight="9.0" prefWidth="200.0" />
+      <Label layoutX="546.0" layoutY="533.0" prefHeight="17.0" prefWidth="72.0" text="Reportes" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="481.0" layoutY="546.0" prefHeight="9.0" prefWidth="200.0" />
+      <Label layoutX="816.0" layoutY="533.0" prefHeight="17.0" prefWidth="72.0" text="Ususarios" textFill="WHITE">
+         <font>
+            <Font name="Comfortaa Light" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="751.0" layoutY="546.0" prefHeight="9.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

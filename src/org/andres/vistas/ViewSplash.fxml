@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="778.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorSplashScreen">
+   <children>
+      <ImageView fitHeight="443.0" fitWidth="813.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/DISEÑO%20APP%20BOLETAS6.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="barraProgreso" layoutY="424.0" prefHeight="18.0" prefWidth="778.0" progress="0.8" style="-fx-background-color: #09c146;" />
+      <Label layoutX="427.0" layoutY="183.0" prefHeight="2.0" prefWidth="296.0" text="Sistema de Boletas" textFill="#50b0e3">
+         <font>
+            <Font name="Comfortaa Light" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
