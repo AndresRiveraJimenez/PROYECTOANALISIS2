@@ -72,4 +72,29 @@ public class ControladorAgregarCliente implements Initializable {
             ex.printStackTrace();
         }
     }
+    public void validarCamposGuardar() {
+        if (txtRazonSocial.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un nombre", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtRazonSocial.requestFocus();
+        } else if (txtDireccion.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un Apellido", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtDireccion.requestFocus();
+        } else if (txtEmail.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un Email", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtEmail.requestFocus();
+        } else if (txtTelefono.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un numero telefonico", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtTelefono.requestFocus();
+        }  else {
+            guardarCliente();
+        }
+    }
 }
