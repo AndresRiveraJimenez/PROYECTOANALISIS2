@@ -97,4 +97,11 @@ public class ControladorAgregarCliente implements Initializable {
             guardarCliente();
         }
     }
+     public void validarTxtTele() {
+        if (!txtTelefono.getText().matches("\\d*")) {
+            txtTelefono.clear();
+        }
+    }
+
+     
 }

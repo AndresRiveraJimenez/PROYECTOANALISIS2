@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -78,6 +79,9 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip autoHide="true" text="Agregar Cliente" />
+         </tooltip>
       </JFXButton>
       <Separator layoutX="916.0" layoutY="409.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
       <JFXButton layoutX="924.0" layoutY="408.0" onAction="#modificarCliente" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2980b9;" text="&#10;&#10;&#10;">
@@ -88,6 +92,9 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip autoHide="true" text="Modificar Cliente" />
+         </tooltip>
       </JFXButton>
       <Separator layoutX="981.0" layoutY="409.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
       <JFXButton layoutX="987.0" layoutY="408.0" onAction="#eliminarCliente" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #e74c3c;" text="&#10;&#10;&#10;">
@@ -98,6 +105,9 @@
                </image>
             </ImageView>
          </graphic>
+         <tooltip>
+            <Tooltip autoHide="true" text="Eliminar Cliente" />
+         </tooltip>
       </JFXButton>
    </children>
 </AnchorPane>
