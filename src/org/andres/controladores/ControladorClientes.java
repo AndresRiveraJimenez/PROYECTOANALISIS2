@@ -125,6 +125,12 @@ public class ControladorClientes implements Initializable {
                         TrayNotification tray = new TrayNotification("ELIMINAR", "El cliente fue eliminado", NotificationType.SUCCESS);
                         tray.setAnimationType(AnimationType.POPUP);
                         tray.showAndDismiss(Duration.seconds(1));
+                        
+                        txtID.setText("");
+                        txtRazonSocial.setText("");
+                        txtEmail.setText("");
+                        txtDireccion.setText("");
+                        txtTelefono.setText("");
                         mostrarDatos();
                         } catch (SQLException ex) {
                             ex.printStackTrace();
