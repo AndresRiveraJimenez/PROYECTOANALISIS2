@@ -13,9 +13,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.andres.bean.Clientes;
 import org.andres.controladores.ControladorAgregarCliente;
+import org.andres.controladores.ControladorAgregarTecnico;
 import org.andres.controladores.ControladorClientes;
 import org.andres.controladores.ControladorModificarCliente;
+import org.andres.controladores.ControladorModificarTecnico;
 import org.andres.controladores.ControladorSplashScreen;
+import org.andres.controladores.ControladorTecnico;
 import org.andres.controladores.ControladorVentanaLogin;
 import org.andres.controladores.ControladorVentanaPrincipal;
 
@@ -51,6 +54,11 @@ public class Principal extends Application{
         this.escenario.close();
     }
     public void cerrarModalCrearCliente()
+    {
+        this.dialog.close();
+        escenario.setOpacity(1);
+    }
+    public void cerrarModalCrearTecnico()
     {
         this.dialog.close();
         escenario.setOpacity(1);
@@ -106,7 +114,7 @@ public class Principal extends Application{
             e.printStackTrace();
         }
     }
-         public void ventanaModificarCliente(int i) {
+        public void ventanaModificarCliente(int i) {
         try {
             escenario.setOpacity(0.95);
             Stage dialog = new Stage();
@@ -125,6 +133,52 @@ public class Principal extends Application{
             e.printStackTrace();
         }
     }
+    public void ventanaTecnicos(){
+        try {
+            ControladorTecnico ventanaTecnicos = (ControladorTecnico)cambiarEscena("ViewTecnicos.fxml",1110 ,597);
+            ventanaTecnicos.setEscenarioPrincipal(this);
+            this.escenario.centerOnScreen();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+        public void ventanaAgregarTecnico() {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+             dialog.initStyle(StageStyle.UNDECORATED);
+             dialog.centerOnScreen();
+                setDialog(dialog);
+
+            ControladorAgregarTecnico agregarTecnico = (ControladorAgregarTecnico) cambiarEscenaModal("ViewTecnicoNuevo.fxml", 382, 441,dialog);
+            agregarTecnico.setEscenarioPrincipal(this);
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL); 
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+         public void ventanaModificarTecnico(int i) {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+             dialog.initStyle(StageStyle.UNDECORATED);
+             dialog.centerOnScreen();
+            setDialog(dialog);
+
+            ControladorModificarTecnico modificarTecnico = (ControladorModificarTecnico) cambiarEscenaModal("ViewTecnicoModificar.fxml", 382, 441,dialog);
+            modificarTecnico.setEscenarioPrincipal(this);
+            modificarTecnico.setTecnicoModificar(i);
+            
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL); 
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+        
     public Initializable cambiarEscena(String fxml, int ancho, int alto) throws IOException, Exception{
         Initializable resultado = null;
         FXMLLoader cargador = new FXMLLoader();
@@ -136,7 +190,7 @@ public class Principal extends Application{
         resultado = (Initializable)cargador.getController();
         return resultado;
     }
-        public Initializable cambiarEscenaModal(String archivoFxml, int ancho, int alto, Stage modal) throws Exception {
+    public Initializable cambiarEscenaModal(String archivoFxml, int ancho, int alto, Stage modal) throws Exception {
         Initializable resultado = null;
         FXMLLoader cargador = new FXMLLoader();
         InputStream archivo = Principal.class.getResourceAsStream(PAQUETE_VISTAS + archivoFxml);

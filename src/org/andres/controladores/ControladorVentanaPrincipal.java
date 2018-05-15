@@ -59,6 +59,10 @@ public class ControladorVentanaPrincipal implements Initializable {
     public void mostrarClientes(){
         escenarioPrincipal.ventanaClientes();
     }   
+    
+    public void mostrarTecnicos(){
+        escenarioPrincipal.ventanaTecnicos();
+    } 
     public void cerrar(){
         escenarioPrincipal.cerrar();
     }
