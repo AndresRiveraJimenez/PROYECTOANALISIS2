@@ -4,6 +4,8 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import org.andres.bean.Clientes;
 import org.andres.recursos.FxDialogs;
+import org.andres.reportes.GenerarReporte;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
 import tray.animations.AnimationType;
@@ -160,4 +163,5 @@ public class ControladorClientes implements Initializable {
         public void cerrar(){
         escenarioPrincipal.cerrar();
     }
+
 }

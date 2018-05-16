@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Clientes" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95e4a233-a4c5-42f3-982c-65303246443e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from clientes]]>
+	</queryString>
+	<field name="idCliente" class="java.lang.Integer"/>
+	<field name="razonSocial" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="estado" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="23" forecolor="#FFFFFF" backcolor="#2A88AF" uuid="2e59ae27-37cd-409b-9c63-7a319cc602cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comfortaa Light" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTES]]></text>
+			</staticText>
+			<textField pattern="yyyy.MM.dd  hh:mm aaa">
+				<reportElement x="471" y="3" width="100" height="20" forecolor="#FFFFFF" uuid="ea8a6241-29b6-415e-8205-9a66eceb0493"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Roboto Mono Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="12" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="572" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="df2bea98-d700-47cc-aaa8-94faf09e8228"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Comfortaa Light" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="56" height="10" forecolor="#000000" backcolor="#000000" uuid="29e03534-eda4-493a-af66-60e54e6189aa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Comfortaa" size="8"/>
+				</textElement>
+				<text><![CDATA[ID Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="1" width="116" height="10" forecolor="#000000" backcolor="#000000" uuid="38f92e3b-8160-4d07-adad-bb670ebaf657"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Comfortaa" size="8"/>
+				</textElement>
+				<text><![CDATA[Razon Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="1" width="100" height="10" forecolor="#000000" backcolor="#000000" uuid="7c788a3f-38ad-4ede-95d2-1500b6cf36d8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Comfortaa" size="8"/>
+				</textElement>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="2" y="0" width="56" height="20" uuid="2ca88f05-1d72-4b95-adfb-dea03b68050b"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="0" width="116" height="20" uuid="90271636-942f-44a9-8515-8e33f7e08944"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razonSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="0" width="100" height="20" uuid="1cf47900-de0e-4d5a-a29f-35bfcd20331d"/>
+				<textElement>
+					<font fontName="Calibri"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement x="272" y="0" width="24" height="16" uuid="21bb30de-0115-4258-a05e-131da5d21a9b"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

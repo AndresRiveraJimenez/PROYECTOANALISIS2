@@ -17,6 +17,7 @@ import org.andres.controladores.ControladorAgregarTecnico;
 import org.andres.controladores.ControladorClientes;
 import org.andres.controladores.ControladorModificarCliente;
 import org.andres.controladores.ControladorModificarTecnico;
+import org.andres.controladores.ControladorReportes;
 import org.andres.controladores.ControladorSplashScreen;
 import org.andres.controladores.ControladorTecnico;
 import org.andres.controladores.ControladorVentanaLogin;
@@ -47,7 +48,7 @@ public class Principal extends Application{
       this.escenario.getIcons().add(new Image("/org/andres/recursos/icono app.png"));
       this.escenario.initStyle(StageStyle.UNDECORATED);
       this.escenario.centerOnScreen();
-      ventanaSplash();
+      ventanaPrincipal();
       this.escenario.show();
     }
     public void cerrar(){
@@ -178,7 +179,15 @@ public class Principal extends Application{
             e.printStackTrace();
         }
     }
-        
+    public void ventanaReportes(){
+        try {
+                ControladorReportes ventanaReportes = (ControladorReportes)cambiarEscena("ViewReportes.fxml",1110 ,597);
+                ventanaReportes.setEscenarioPrincipal(this);
+                this.escenario.centerOnScreen();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }        
     public Initializable cambiarEscena(String fxml, int ancho, int alto) throws IOException, Exception{
         Initializable resultado = null;
         FXMLLoader cargador = new FXMLLoader();
