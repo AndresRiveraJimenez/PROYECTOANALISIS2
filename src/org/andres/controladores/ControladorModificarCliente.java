@@ -7,20 +7,15 @@ package org.andres.controladores;
 
 import java.net.URL;
 import java.sql.CallableStatement;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import org.andres.bean.Clientes;
-import org.andres.recursos.FxDialogs;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
 import tray.animations.AnimationType;
@@ -72,7 +67,7 @@ public class ControladorModificarCliente implements Initializable {
     }
     public void cerrar()
     {
-        escenarioPrincipal.cerrarModalCrearCliente();
+        escenarioPrincipal.cerrarModalCrear();
     }
     
     public Clientes buscarCliente(int idClienteModificar) {

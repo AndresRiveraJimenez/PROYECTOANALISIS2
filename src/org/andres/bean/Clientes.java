@@ -1,10 +1,6 @@
 
 package org.andres.bean;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-
 public class Clientes{
     private int idCliente;
     private String razonSocial;
@@ -15,6 +11,11 @@ public class Clientes{
 
 
     public Clientes() {
+    }
+
+    public Clientes(int idCliente, String razonSocial) {
+        this.idCliente = idCliente;
+        this.razonSocial = razonSocial;
     }
 
     public Clientes(int idCliente, String razonSocial, String telefono, String correo, String direccion, int estado) {

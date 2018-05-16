@@ -74,10 +74,10 @@ public class ControladorAgregarTecnico implements Initializable {
     }
     public void cerrar()
     {
-        escenarioPrincipal.cerrarModalCrearTecnico();
+        escenarioPrincipal.cerrarModalCrear();
     }
     
-        public void guardarCliente(){
+        public void guardarTecnico(){
                 CallableStatement  procedimiento;
         try {
             procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_AgregarTecnico(?,?,?,?,?,?,?)}");
@@ -152,7 +152,7 @@ public class ControladorAgregarTecnico implements Initializable {
             tray.showAndDismiss(Duration.seconds(1));
             txtUsuarioDominio.requestFocus();
         }else {
-            guardarCliente();
+            guardarTecnico();
         }
     }
    

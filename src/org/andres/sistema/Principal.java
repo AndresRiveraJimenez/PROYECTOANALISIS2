@@ -11,10 +11,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.andres.bean.Clientes;
+import org.andres.controladores.ControladorAgregarBoleta;
 import org.andres.controladores.ControladorAgregarCliente;
 import org.andres.controladores.ControladorAgregarTecnico;
+import org.andres.controladores.ControladorBoleta;
 import org.andres.controladores.ControladorClientes;
+import org.andres.controladores.ControladorModificarBoleta;
 import org.andres.controladores.ControladorModificarCliente;
 import org.andres.controladores.ControladorModificarTecnico;
 import org.andres.controladores.ControladorSplashScreen;
@@ -53,16 +55,12 @@ public class Principal extends Application{
     public void cerrar(){
         this.escenario.close();
     }
-    public void cerrarModalCrearCliente()
+    public void cerrarModalCrear()
     {
         this.dialog.close();
         escenario.setOpacity(1);
     }
-    public void cerrarModalCrearTecnico()
-    {
-        this.dialog.close();
-        escenario.setOpacity(1);
-    }
+
     public  void ventanaSplash(){
         try {
                  ControladorSplashScreen ventanSplash = (ControladorSplashScreen) cambiarEscena("ViewSplash.fxml", 778, 442);
@@ -173,6 +171,53 @@ public class Principal extends Application{
             
             dialog.initOwner(escenario);
             dialog.initModality(Modality.APPLICATION_MODAL); 
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void ventanaBoletas(){
+        try {
+            ControladorBoleta ventanaBoleta = (ControladorBoleta)cambiarEscena("ViewBoleta.fxml",1110 ,597);
+            ventanaBoleta.setEscenarioPrincipal(this);
+            this.escenario.centerOnScreen();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+        public void ventanaAgregarBoleta() {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.centerOnScreen();
+            setDialog(dialog);
+
+            ControladorAgregarBoleta agregarBoleta = (ControladorAgregarBoleta) cambiarEscenaModal("ViewBoletaNueva.fxml", 707, 582, dialog);
+            agregarBoleta.setEscenarioPrincipal(this);
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+       
+        public void ventanaModificarBoleta(int i) {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.centerOnScreen();
+            setDialog(dialog);
+
+            ControladorModificarBoleta modificarBoleta = (ControladorModificarBoleta) cambiarEscenaModal("ViewBoletaModificar.fxml", 707, 582, dialog);
+            modificarBoleta.setEscenarioPrincipal(this);
+            modificarBoleta.setBoletaModificar(i);
+
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();

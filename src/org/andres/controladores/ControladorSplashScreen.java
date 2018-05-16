@@ -11,7 +11,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
 import org.andres.sistema.Principal;
 
 /**

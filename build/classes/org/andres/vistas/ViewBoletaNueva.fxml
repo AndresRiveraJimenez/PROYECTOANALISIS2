@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="707.0" style="-fx-border-color: #175b87; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorAgregarBoleta">
+   <children>
+      <Button fx:id="btnGuardar" layoutX="876.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="GUARDAR" visible="false" />
+      <Pane layoutX="1.0" layoutY="1.0" prefHeight="47.0" prefWidth="707.0" style="-fx-background-color: #3d9bc2;">
+         <children>
+            <Label layoutX="3.0" layoutY="1.0" text="NUEVA BOLETA" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="678.0" layoutY="-1.0" onMouseClicked="#cerrar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/icons8-cerrar-ventana-96%20(1).png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <JFXButton fx:id="btnAgregar" layoutX="116.0" layoutY="531.0" onAction="#validarCamposGuardar" prefHeight="31.0" prefWidth="575.0" style="-fx-background-color: #175b87;" text="GUARDAR" textFill="WHITE" />
+      <Label layoutX="27.0" layoutY="74.0" prefHeight="17.0" prefWidth="81.0" text="Fecha Visita" />
+      <Label layoutX="275.0" layoutY="74.0" prefHeight="17.0" prefWidth="81.0" text="Hora Entrada" />
+      <TextField fx:id="txtHoraSalida" layoutX="573.0" layoutY="70.0" prefHeight="25.0" prefWidth="114.0" />
+      <Label layoutX="502.0" layoutY="74.0" prefHeight="17.0" prefWidth="69.0" text="Hora Salida" />
+      <Label layoutX="52.0" layoutY="114.0" prefHeight="17.0" prefWidth="81.0" text="Motivo" />
+      <TextField fx:id="txtMotivo" layoutX="115.0" layoutY="110.0" prefHeight="25.0" prefWidth="575.0" />
+      <TextField fx:id="txtCliente" layoutX="112.0" layoutY="150.0" onKeyTyped="#validarIdCliente" prefHeight="25.0" prefWidth="248.0" />
+      <Label layoutX="3.0" layoutY="154.0" prefHeight="17.0" prefWidth="114.0" text="Numero de Cliente" />
+      <Label layoutX="390.0" layoutY="154.0" prefHeight="17.0" prefWidth="49.0" text="Tecnico" />
+      <Label layoutX="27.0" layoutY="191.0" prefHeight="17.0" prefWidth="81.0" text="Descripcion" />
+      <DatePicker fx:id="txtFechaVisita" layoutX="117.0" layoutY="70.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField fx:id="txtHoraEntrada" layoutX="365.0" layoutY="70.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextArea fx:id="txtDescripcion" layoutX="114.0" layoutY="187.0" prefHeight="322.0" prefWidth="575.0" />
+      <ComboBox fx:id="txtTecnico" layoutX="442.0" layoutY="150.0" prefWidth="248.0" />
+   </children>
+</AnchorPane>

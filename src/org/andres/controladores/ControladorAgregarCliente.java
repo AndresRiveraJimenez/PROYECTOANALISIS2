@@ -5,21 +5,16 @@
  */
 package org.andres.controladores;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.sql.CallableStatement;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
-import org.andres.recursos.FxDialogs;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
 import tray.animations.AnimationType;
@@ -32,10 +27,28 @@ import tray.notification.TrayNotification;
  */
 public class ControladorAgregarCliente implements Initializable {
     @FXML private TextField txtRazonSocial;
-    @FXML private TextField txtDireccion;
-    @FXML private TextField txtEmail;
-    @FXML private TextField txtTelefono;
+    private TextField txtDireccion;
+    private TextField txtEmail;
+    private TextField txtTelefono;
     private Principal escenarioPrincipal;
+    @FXML
+    private Button btnGuardar;
+    @FXML
+    private JFXButton btnAgregar;
+    @FXML
+    private TextField txtRazonSocial1;
+    @FXML
+    private TextField txtRazonSocial11;
+    @FXML
+    private TextField txtRazonSocial12;
+    @FXML
+    private TextField txtRazonSocial2;
+    @FXML
+    private TextField txtRazonSocial21;
+    @FXML
+    private TextField txtRazonSocial22;
+    @FXML
+    private TextField txtRazonSocial13;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -47,10 +60,12 @@ public class ControladorAgregarCliente implements Initializable {
     public Principal getEscenarioPrincipal() {
         return escenarioPrincipal;
     }
+    @FXML
     public void cerrar()
     {
-        escenarioPrincipal.cerrarModalCrearCliente();
+        escenarioPrincipal.cerrarModalCrear();
     }
+    @FXML
     public void guardarCliente(){
                 CallableStatement  procedimiento;
         try {

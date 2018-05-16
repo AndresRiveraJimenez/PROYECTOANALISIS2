@@ -13,6 +13,11 @@ public class Tecnico {
     public Tecnico() {
     }
 
+    public Tecnico(int idTecnico, String nombre) {
+        this.idTecnico = idTecnico;
+        this.nombre = nombre;
+    }
+    
     public Tecnico(int idTecnico, String nombre, String apellido, String telefono, String correo, String usuarioD, String departamento, int estado) {
         this.idTecnico = idTecnico;
         this.nombre = nombre;

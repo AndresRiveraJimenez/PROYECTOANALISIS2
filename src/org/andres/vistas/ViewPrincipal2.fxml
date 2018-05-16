@@ -54,7 +54,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="605.0" layoutY="105.0" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #02746c;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="605.0" layoutY="105.0" onAction="#mostrarBoletas" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #02746c;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>

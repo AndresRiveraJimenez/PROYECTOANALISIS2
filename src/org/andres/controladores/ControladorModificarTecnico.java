@@ -45,7 +45,6 @@ public class ControladorModificarTecnico implements Initializable {
     }
     
     public void setTecnicoModificar(int idTecnicoModificar) {
-       // System.out.println(idTecnicoModificar);
         
         this.tecnicoModificar = buscarTecnico(idTecnicoModificar);
         txtID.setText(String.valueOf(tecnicoModificar.getIdTecnico()));
@@ -57,18 +56,7 @@ public class ControladorModificarTecnico implements Initializable {
         txtDepartamento.setValue(String.valueOf(tecnicoModificar.getDepartamento()));
 
     }
-    
-    public String seleccionarItemDept(String idDep) {
         
-        String departamento = " ";
-        for (Departamento dep : listaDepartamentos) {
-           // if (dep.getIdDepartamento() == idDep) {
-            //    departamento  = dep.getNombre();
-            //}
-        }
-        return departamento;
-    }
-    
      public ObservableList<String> getListaDepartemantos() {
 
         ResultSet departemantos = Conexion.getInstancia().hacerConsulta("select * from  Departamentos");
@@ -96,7 +84,7 @@ public class ControladorModificarTecnico implements Initializable {
     }
 
     public void cerrar() {
-        escenarioPrincipal.cerrarModalCrearTecnico();
+        escenarioPrincipal.cerrarModalCrear();
     }
 
     public Tecnico buscarTecnico(int idTecnicoModificar) {
