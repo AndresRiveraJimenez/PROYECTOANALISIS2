@@ -8,9 +8,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="PruebaSplash.jar" size="2485164" download="eager" />
+    <jar href="PruebaSplash.jar" size="2506052" download="eager" />
     <jar href="lib\TrayNotification.jar" size="41019" download="eager" />
     <jar href="lib\controlsfx-8.40.14.jar" size="1215643" download="eager" />
+    <jar href="lib\jasperreports-5.6.0.jar" size="4989676" download="eager" />
     <jar href="lib\jfoenix.jar" size="2359643" download="eager" />
     <jar href="lib\sqljdbc4.jar" size="466359" download="eager" />
   </resources>
