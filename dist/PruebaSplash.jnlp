@@ -8,9 +8,29 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="PruebaSplash.jar" size="2506052" download="eager" />
+=======
+    <jar href="PruebaSplash.jar" size="2501654" download="eager" />
+>>>>>>> b7fb04d1fe73cf6809f89e2b5b7141a0d92d41ef
     <jar href="lib\TrayNotification.jar" size="41019" download="eager" />
+    <jar href="lib\commons-beanutils-1.8.2.jar" size="231891" download="eager" />
+    <jar href="lib\commons-collections-3.2.1.jar" size="575389" download="eager" />
+    <jar href="lib\commons-dbcp-1.2.2.jar" size="121757" download="eager" />
+    <jar href="lib\commons-digester-2.1.jar" size="196768" download="eager" />
+    <jar href="lib\commons-javaflow-20060411.jar" size="96529" download="eager" />
+    <jar href="lib\commons-logging-1.1.jar" size="52592" download="eager" />
+    <jar href="lib\commons-math-1.0.jar" size="152709" download="eager" />
+    <jar href="lib\commons-pool-1.3.jar" size="62086" download="eager" />
+    <jar href="lib\commons-pool-1.6.jar" size="111119" download="eager" />
+    <jar href="lib\commons-vfs-1.0.jar" size="362717" download="eager" />
     <jar href="lib\controlsfx-8.40.14.jar" size="1215643" download="eager" />
+<<<<<<< HEAD
+=======
+    <jar href="lib\dom4j-1.6.jar" size="313359" download="eager" />
+    <jar href="lib\groovy-all-2.0.1.jar" size="6191960" download="eager" />
+    <jar href="lib\iText-2.1.7.js2.jar" size="1130575" download="eager" />
+>>>>>>> b7fb04d1fe73cf6809f89e2b5b7141a0d92d41ef
     <jar href="lib\jasperreports-5.6.0.jar" size="4989676" download="eager" />
     <jar href="lib\jfoenix.jar" size="2359643" download="eager" />
     <jar href="lib\sqljdbc4.jar" size="466359" download="eager" />

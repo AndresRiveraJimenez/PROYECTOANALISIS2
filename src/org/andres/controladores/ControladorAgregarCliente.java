@@ -9,12 +9,19 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
+<<<<<<< HEAD
+=======
+import org.andres.recursos.FxDialogs;
+import org.andres.reportes.GenerarReporte;
+>>>>>>> b7fb04d1fe73cf6809f89e2b5b7141a0d92d41ef
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
 import tray.animations.AnimationType;
