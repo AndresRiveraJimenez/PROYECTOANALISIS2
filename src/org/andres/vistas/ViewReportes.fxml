@@ -18,7 +18,7 @@
                   <Font name="Comfortaa Regular" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="482.0" layoutY="17.0" text="CLIENTES" textFill="WHITE">
+            <Label layoutX="482.0" layoutY="17.0" text="REPORTES" textFill="WHITE">
                <font>
                   <Font name="Comfortaa Regular" size="24.0" />
                </font>
