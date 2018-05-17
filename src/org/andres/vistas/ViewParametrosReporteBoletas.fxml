@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="382.0" style="-fx-border-color: #175b87; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorParametrosBoletasReporte">
+   <children>
+      <Button fx:id="btnGuardar" layoutX="876.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="GUARDAR" visible="false" />
+      <Pane layoutX="1.0" layoutY="1.0" prefHeight="47.0" prefWidth="380.0" style="-fx-background-color: #3d9bc2;">
+         <children>
+            <Label layoutX="3.0" layoutY="1.0" text="PARAMETROS REPORTE BOLETAS" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="350.0" layoutY="-3.0" onMouseClicked="#cerrar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/icons8-cerrar-ventana-96%20(1).png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <JFXButton layoutX="112.0" layoutY="248.0" onAction="#reporteClientes" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #175b87;" text="GENERAR REPORTE" textFill="WHITE" />
+      <DatePicker fx:id="datePicFechaInicio" layoutX="129.0" layoutY="98.0" />
+      <DatePicker fx:id="datePicFechaFinal" layoutX="129.0" layoutY="156.0" />
+      <Label layoutX="53.0" layoutY="160.0" text="Fecha Final:" />
+      <Label layoutX="53.0" layoutY="102.0" text="Fecha Inicio:" />
+   </children>
+</AnchorPane>

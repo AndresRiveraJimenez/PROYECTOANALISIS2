@@ -19,6 +19,7 @@ import org.andres.controladores.ControladorClientes;
 import org.andres.controladores.ControladorModificarBoleta;
 import org.andres.controladores.ControladorModificarCliente;
 import org.andres.controladores.ControladorModificarTecnico;
+import org.andres.controladores.ControladorParametrosBoletasReporte;
 import org.andres.controladores.ControladorReportes;
 import org.andres.controladores.ControladorSplashScreen;
 import org.andres.controladores.ControladorTecnico;
@@ -233,7 +234,24 @@ public class Principal extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }        
+    } 
+        public void ventanaParametrosRepBoleta() {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+             dialog.initStyle(StageStyle.UNDECORATED);
+             dialog.centerOnScreen();
+                setDialog(dialog);
+
+            ControladorParametrosBoletasReporte parametrosRepBoletas = (ControladorParametrosBoletasReporte) cambiarEscenaModal("ViewParametrosReporteBoletas.fxml", 382, 302,dialog);
+            parametrosRepBoletas.setEscenarioPrincipal(this);
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL); 
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public Initializable cambiarEscena(String fxml, int ancho, int alto) throws IOException, Exception{
         Initializable resultado = null;
         FXMLLoader cargador = new FXMLLoader();

@@ -9,7 +9,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import org.andres.reportes.GenerarReporte;
 import org.andres.sistema.Principal;
 
@@ -19,6 +21,7 @@ import org.andres.sistema.Principal;
  */
 public class ControladorReportes implements Initializable{
     private Principal escenarioPrincipal;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -31,14 +34,14 @@ public class ControladorReportes implements Initializable{
         this.escenarioPrincipal = escenarioPrincipal;
     }
     
-        public void reporteClientes(){
-        Map parametros = new HashMap();
-        GenerarReporte.getInstancia().GenerarReporte(parametros, "Clientes.jasper", "Reporte de Clientes");
-    }
+
     public void ventanaPrincipal(){
         escenarioPrincipal.ventanaPrincipal();
     }
             public void cerrar(){
         escenarioPrincipal.cerrar();
+    }
+    public void ventanaParametros(){
+        escenarioPrincipal.ventanaParametrosRepBoleta();
     }
 }
