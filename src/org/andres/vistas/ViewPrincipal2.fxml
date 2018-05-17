@@ -66,7 +66,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="145.0" layoutY="306.0" onAction="#mostrarReportes" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #1c344e;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="145.0" layoutY="306.0" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #1c344e;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>
@@ -78,7 +78,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="375.0" layoutY="307.0" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #ef5282;" text="CLIENTES" textFill="WHITE">
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="375.0" layoutY="307.0" onAction="#mostrarReportes" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #ef5282;" text="CLIENTES" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>

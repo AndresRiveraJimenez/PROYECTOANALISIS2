@@ -3,3 +3,6 @@ dist/PruebaSplash.jnlp
 dist/PruebaSplash.jar
 dist/PruebaSplash.html
 build/built-jar.properties
+/nbproject/private/
+/build/
+/dist/

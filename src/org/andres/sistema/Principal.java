@@ -177,7 +177,6 @@ public class Principal extends Application{
             e.printStackTrace();
         }
     }
-<<<<<<< HEAD
     
     public void ventanaBoletas(){
         try {
@@ -226,7 +225,6 @@ public class Principal extends Application{
         }
     }
         
-=======
     public void ventanaReportes(){
         try {
                 ControladorReportes ventanaReportes = (ControladorReportes)cambiarEscena("ViewReportes.fxml",1110 ,597);
@@ -236,7 +234,6 @@ public class Principal extends Application{
             e.printStackTrace();
         }
     }        
->>>>>>> b7fb04d1fe73cf6809f89e2b5b7141a0d92d41ef
     public Initializable cambiarEscena(String fxml, int ancho, int alto) throws IOException, Exception{
         Initializable resultado = null;
         FXMLLoader cargador = new FXMLLoader();

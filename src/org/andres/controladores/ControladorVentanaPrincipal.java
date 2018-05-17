@@ -63,16 +63,12 @@ public class ControladorVentanaPrincipal implements Initializable {
     public void mostrarTecnicos(){
         escenarioPrincipal.ventanaTecnicos();
     } 
-<<<<<<< HEAD
-    
     public void mostrarBoletas(){
         escenarioPrincipal.ventanaBoletas();
     } 
-=======
     public void mostrarReportes(){
         escenarioPrincipal.ventanaReportes();
     }
->>>>>>> b7fb04d1fe73cf6809f89e2b5b7141a0d92d41ef
     public void cerrar(){
         escenarioPrincipal.cerrar();
     }
