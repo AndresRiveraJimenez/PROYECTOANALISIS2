@@ -16,6 +16,7 @@ import org.andres.controladores.ControladorAgregarCliente;
 import org.andres.controladores.ControladorAgregarTecnico;
 import org.andres.controladores.ControladorBoleta;
 import org.andres.controladores.ControladorClientes;
+import org.andres.controladores.ControladorDashboardAsignaciones;
 import org.andres.controladores.ControladorModificarBoleta;
 import org.andres.controladores.ControladorModificarCliente;
 import org.andres.controladores.ControladorModificarTecnico;
@@ -251,6 +252,15 @@ public class Principal extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void ventanaDashboardAsig(){
+        try {
+                ControladorDashboardAsignaciones ventanaDashAsig = (ControladorDashboardAsignaciones)cambiarEscena("ViewDashboard.fxml",998,597);
+                ventanaDashAsig.setEscenarioPrincipal(this);
+                this.escenario.centerOnScreen();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
     }
     public Initializable cambiarEscena(String fxml, int ancho, int alto) throws IOException, Exception{
         Initializable resultado = null;

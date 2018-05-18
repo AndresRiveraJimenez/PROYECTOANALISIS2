@@ -1,4 +1,4 @@
-/*
+/*5
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -48,7 +48,7 @@ public class ControladorParametrosBoletasReporte implements Initializable{
         LocalDate fechaFinal = datePicFechaFinal.getValue();
         if(fechaInicio.isAfter(fechaFinal)){
             
-            TrayNotification tray = new TrayNotification("ERROR", "El rango de para la fecha es incorrecta", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("ERROR", "El rango para la fecha es incorrecto", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.POPUP);
             tray.showAndDismiss(Duration.seconds(1));
         }

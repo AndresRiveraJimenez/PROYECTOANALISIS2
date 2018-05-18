@@ -69,6 +69,9 @@ public class ControladorVentanaPrincipal implements Initializable {
     public void mostrarReportes(){
         escenarioPrincipal.ventanaReportes();
     }
+    public void mostrarDashAsignaciones(){
+        escenarioPrincipal.ventanaDashboardAsig();
+    }
     public void cerrar(){
         escenarioPrincipal.cerrar();
     }
