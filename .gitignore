@@ -1,8 +1,9 @@
-
-dist/PruebaSplash.jnlp
-dist/PruebaSplash.jar
-dist/PruebaSplash.html
-build/built-jar.properties
-/nbproject/private/
-/build/
-/dist/
+nbproject/private/
+build/
+nbbuild/
+dist/
+dist/
+build/
+nbdist/
+nbactions.xml
+nb-configuration.xml

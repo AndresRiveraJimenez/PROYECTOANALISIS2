@@ -5,7 +5,6 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
@@ -36,7 +35,7 @@ public class ControladorModificarBoleta implements Initializable {
     @FXML private TextField txtHoraEntrada;
     @FXML private TextField txtHoraSalida;
     @FXML private TextField txtMotivo;
-    @FXML private TextField txtCliente;
+    @FXML private ComboBox txtCliente;
     @FXML private ComboBox txtTecnico;
     @FXML private TextArea txtDescripcion;
     @FXML private DatePicker txtFechaVisita;
@@ -44,12 +43,16 @@ public class ControladorModificarBoleta implements Initializable {
     private Principal escenarioPrincipal;
     private Boleta boletaModificar;
     private ArrayList<Tecnico> listaTecnicos;
+    private ArrayList<Clientes> listaClientes;
     private int tecnicoEscogido;
+    private int clienteEscogido;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txtTecnico.setItems(getListaTecnicos());
+        txtCliente.setItems(getListaClientes());
     }
+    
     
     public ObservableList<String> getListaTecnicos() {
         ResultSet tecnico = Conexion.getInstancia().hacerConsulta("select a.idTecnico, a.nombreTecnico "
@@ -68,6 +71,25 @@ public class ControladorModificarBoleta implements Initializable {
         return FXCollections.observableArrayList(lista);
     }
     
+    public ObservableList<String> getListaClientes() {
+
+        ResultSet clientes = Conexion.getInstancia().hacerConsulta("SELECT c.idCliente, c.razonSocial  FROM Clientes c where c.estado = 1");
+        listaClientes = new ArrayList<Clientes>();
+        ArrayList<String> lista = new ArrayList<String>();
+        try {
+            while (clientes.next()) {
+                listaClientes.add(
+                        new Clientes(clientes.getInt("idCliente"),
+                                clientes.getString("razonSocial")));
+                
+                lista.add(clientes.getString("razonSocial"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return   FXCollections.observableArrayList(lista);
+    }
+       
     public void setBoletaModificar(int idBoletaModificar) {    
         
         this.boletaModificar = buscarBoleta(idBoletaModificar);
@@ -76,10 +98,10 @@ public class ControladorModificarBoleta implements Initializable {
         txtHoraEntrada.setText(boletaModificar.getHoraEntrada().toString());
         txtHoraSalida.setText(boletaModificar.getHoraSalida().toString());   
         txtMotivo.setText(boletaModificar.getMotivo());
-        txtCliente.setText(String.valueOf(boletaModificar.getCliente().getIdCliente()));
+        txtCliente.setValue(boletaModificar.getCliente().getRazonSocial());
         txtTecnico.setValue((boletaModificar.getTecnico()));
         txtDescripcion.setText(boletaModificar.getDescripcion());
-        txtFechaVisita.setValue(boletaModificar.getFechaCreado());
+        txtFechaVisita.setValue(boletaModificar.getFechaVisita());
 
     }
     
@@ -103,7 +125,7 @@ public class ControladorModificarBoleta implements Initializable {
         return resultado;
     }
     
-    public Clientes buscarCliente(int idClienteModificar) {
+   /* public Clientes buscarCliente(int idClienteModificar) {
         Clientes resultado = null;
         try {
             PreparedStatement procedimiento = (PreparedStatement) Conexion.getInstancia().getConexion().prepareStatement("{call sp_BuscarCliente(?)}");
@@ -116,7 +138,8 @@ public class ControladorModificarBoleta implements Initializable {
             e.printStackTrace();
         }
         return resultado;
-    }
+    }*/
+    
     public void setEscenarioPrincipal(Principal escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
     }
@@ -140,7 +163,7 @@ public class ControladorModificarBoleta implements Initializable {
                 procedimiento.setString(4, txtHoraEntrada.getText());
                 procedimiento.setString(5, txtHoraSalida.getText());
                 procedimiento.setString(6, txtDescripcion.getText());
-                procedimiento.setInt(7, Integer.valueOf(txtCliente.getText()));
+                procedimiento.setInt(7, clienteEscogido);
                 procedimiento.setInt(8, tecnicoEscogido);
 
                 procedimiento.execute();
@@ -186,16 +209,6 @@ public class ControladorModificarBoleta implements Initializable {
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtMotivo.requestFocus();
-        } else if (txtCliente.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes ingresar un cliente", NotificationType.ERROR);
-            tray.setAnimationType(AnimationType.FADE);
-            tray.showAndDismiss(Duration.seconds(1));
-            txtCliente.requestFocus();
-        } else if ( buscarCliente( Integer.valueOf(txtCliente.getText())) == null) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes ingresar un numero de cliente valido", NotificationType.ERROR);
-            tray.setAnimationType(AnimationType.FADE);
-            tray.showAndDismiss(Duration.seconds(1));
-            txtCliente.requestFocus();
         }else if (txtDescripcion.getText().isEmpty()) {
             TrayNotification tray = new TrayNotification("ERROR", "Debes ingresar una descripcion", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
@@ -203,6 +216,7 @@ public class ControladorModificarBoleta implements Initializable {
             txtDescripcion.requestFocus();
         }  else {
             seleccionarItemTecnico();
+            seleccionarItemCliente();
             actualizarBoleta();
         }
     }
@@ -247,6 +261,18 @@ public class ControladorModificarBoleta implements Initializable {
         }
     }
     
+    public void seleccionarItemCliente() {
+
+        String cliente = txtCliente.getValue().toString();
+
+        for (Clientes cli : listaClientes) {
+            if (cli.getRazonSocial().equals(cliente)) {
+                clienteEscogido = cli.getIdCliente();
+            }
+        }
+    }
+    
+    
     public boolean validarHora(String hora) {
 
         String regex = "^[\\d]{1,2}:[0-9]{1,2}$";
@@ -254,11 +280,5 @@ public class ControladorModificarBoleta implements Initializable {
         Matcher matcher = pattern.matcher(hora);
 
         return matcher.matches();
-    }
-    
-    public void validarIdCliente() {
-        if (!txtCliente.getText().matches("\\d*")) {
-            txtCliente.clear();
-        }
     }
 }
