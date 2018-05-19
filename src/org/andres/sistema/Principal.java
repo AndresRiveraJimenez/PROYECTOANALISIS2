@@ -14,6 +14,7 @@ import javafx.stage.StageStyle;
 import org.andres.controladores.ControladorAgregarBoleta;
 import org.andres.controladores.ControladorAgregarCliente;
 import org.andres.controladores.ControladorAgregarTecnico;
+import org.andres.controladores.ControladorAgregarUsuario;
 import org.andres.controladores.ControladorBoleta;
 import org.andres.controladores.ControladorClientes;
 import org.andres.controladores.ControladorDashboardAsignaciones;
@@ -24,6 +25,7 @@ import org.andres.controladores.ControladorParametrosBoletasReporte;
 import org.andres.controladores.ControladorReportes;
 import org.andres.controladores.ControladorSplashScreen;
 import org.andres.controladores.ControladorTecnico;
+import org.andres.controladores.ControladorUsuario;
 import org.andres.controladores.ControladorVentanaLogin;
 import org.andres.controladores.ControladorVentanaPrincipal;
 
@@ -208,6 +210,53 @@ public class Principal extends Application{
     }
        
         public void ventanaModificarBoleta(int i) {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.centerOnScreen();
+            setDialog(dialog);
+
+            ControladorModificarBoleta modificarBoleta = (ControladorModificarBoleta) cambiarEscenaModal("ViewBoletaModificar.fxml", 707, 582, dialog);
+            modificarBoleta.setEscenarioPrincipal(this);
+            modificarBoleta.setBoletaModificar(i);
+
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ventanaUsuario() {
+        try {
+            ControladorUsuario ventanaUsuario = (ControladorUsuario) cambiarEscena("ViewUsuario.fxml", 1110, 597);
+            ventanaUsuario.setEscenarioPrincipal(this);
+            this.escenario.centerOnScreen();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+        public void ventanaAgregarUsuario() {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.centerOnScreen();
+            setDialog(dialog);
+
+            ControladorAgregarUsuario agregarUsuario = (ControladorAgregarUsuario) cambiarEscenaModal("ViewUsuarioNuevo.fxml", 382, 409, dialog);
+            agregarUsuario.setEscenarioPrincipal(this);
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+       
+        public void ventanaModificarUsuario(int i) {
         try {
             escenario.setOpacity(0.95);
             Stage dialog = new Stage();

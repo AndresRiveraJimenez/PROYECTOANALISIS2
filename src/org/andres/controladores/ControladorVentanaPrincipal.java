@@ -59,12 +59,14 @@ public class ControladorVentanaPrincipal implements Initializable {
     public void mostrarClientes(){
         escenarioPrincipal.ventanaClientes();
     }   
-    
     public void mostrarTecnicos(){
         escenarioPrincipal.ventanaTecnicos();
     } 
     public void mostrarBoletas(){
         escenarioPrincipal.ventanaBoletas();
+    } 
+    public void mostrarUsuario(){
+        escenarioPrincipal.ventanaUsuario();
     } 
     public void mostrarReportes(){
         escenarioPrincipal.ventanaReportes();

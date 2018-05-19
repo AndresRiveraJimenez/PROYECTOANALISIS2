@@ -150,7 +150,7 @@ public class ControladorAgregarTecnico implements Initializable {
             TrayNotification tray = new TrayNotification("GUARDAR", "Por favor seleccione un departamento", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
-            txtUsuarioDominio.requestFocus();
+            txtDepartamento.requestFocus();
         }else {
             guardarTecnico();
         }

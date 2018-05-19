@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="565.0" prefWidth="867.0" style="-fx-background-color: #ffffff; -fx-border-color: #175b87; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorVentanaPrincipal">
+<AnchorPane prefHeight="565.0" prefWidth="867.0" style="-fx-background-color: #ffffff; -fx-border-color: #175b87; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorVentanaPrincipal">
    <children>
       <Pane layoutX="-9.0" prefHeight="52.0" prefWidth="966.0" style="-fx-background-color: #3d9bc2;">
          <children>
@@ -90,7 +90,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="605.0" layoutY="306.0" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #05518d;" text="&#10;&#10;&#10;&#10;&#10;" textFill="WHITE">
+      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="605.0" layoutY="306.0" onAction="#mostrarUsuario" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #05518d;" text="&#10;&#10;&#10;&#10;&#10;" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>
