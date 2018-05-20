@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="597.0" prefWidth="1103.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorBoleta">
+<AnchorPane prefHeight="597.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorBoleta">
    <children>
-      <Pane prefHeight="46.0" prefWidth="1102.0" style="-fx-background-color: #3d9bc2;">
+      <Pane prefHeight="46.0" prefWidth="1110.0" style="-fx-background-color: #3d9bc2;">
          <children>
             <Label layoutX="1006.0" layoutY="20.0" prefHeight="27.0" prefWidth="91.0" text="usuario" textFill="#f8f8f8">
                <font>
@@ -81,7 +81,7 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip autoHide="true" text="Modificar Cliente" />
+            <Tooltip autoHide="true" text="Modificar boleta" />
          </tooltip>
       </JFXButton>
       <Separator layoutX="988.0" layoutY="540.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
@@ -94,7 +94,7 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip autoHide="true" text="Eliminar Cliente" />
+            <Tooltip autoHide="true" text="Eliminar boleta" />
          </tooltip>
       </JFXButton>
       <JFXButton layoutX="866.0" layoutY="540.0" onAction="#agregarBoleta" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2ecc71;" text="&#10;&#10;&#10;">
@@ -106,7 +106,7 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip autoHide="true" text="Agregar Cliente" />
+            <Tooltip autoHide="true" text="Agregar boleta" />
          </tooltip>
       </JFXButton>
       <Label layoutX="792.0" layoutY="290.0" text="Cliente" />

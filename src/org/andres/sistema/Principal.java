@@ -21,6 +21,7 @@ import org.andres.controladores.ControladorDashboardAsignaciones;
 import org.andres.controladores.ControladorModificarBoleta;
 import org.andres.controladores.ControladorModificarCliente;
 import org.andres.controladores.ControladorModificarTecnico;
+import org.andres.controladores.ControladorModificarUsuario;
 import org.andres.controladores.ControladorParametrosBoletasReporte;
 import org.andres.controladores.ControladorReportes;
 import org.andres.controladores.ControladorSplashScreen;
@@ -264,9 +265,9 @@ public class Principal extends Application{
             dialog.centerOnScreen();
             setDialog(dialog);
 
-            ControladorModificarBoleta modificarBoleta = (ControladorModificarBoleta) cambiarEscenaModal("ViewBoletaModificar.fxml", 707, 582, dialog);
-            modificarBoleta.setEscenarioPrincipal(this);
-            modificarBoleta.setBoletaModificar(i);
+            ControladorModificarUsuario modificarUsuario = (ControladorModificarUsuario) cambiarEscenaModal("ViewUsuarioModificar.fxml", 382, 409, dialog);
+            modificarUsuario.setEscenarioPrincipal(this);
+            modificarUsuario.setUsuariooModificar(i);
 
             dialog.initOwner(escenario);
             dialog.initModality(Modality.APPLICATION_MODAL);
