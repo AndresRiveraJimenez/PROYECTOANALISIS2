@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,7 +43,8 @@ public class ControladorUsuario implements Initializable {
     @FXML private TextField txtNombreUsuario;
     @FXML private TextField txtRol;
     @FXML private TextField txtSearch;
-
+    @FXML private Label labelUserAuth;
+    private Usuario userAuth;
     private ObservableList<Usuario> listaUsuarios;
 
     @Override
@@ -50,6 +52,10 @@ public class ControladorUsuario implements Initializable {
         mostrarDatos();
     }
     
+    public void setUserAuth(Usuario userAuth){
+        this.userAuth = userAuth;
+        labelUserAuth.setText(userAuth.getUser());
+    }
     
     public void mostrarDatos() {
         tblUsuario.setItems(getListaUsuarios());
@@ -99,7 +105,7 @@ public class ControladorUsuario implements Initializable {
             txtRol.setText(tblUsuario.getSelectionModel().getSelectedItem().getRol().getNombre());
         }else
         {
-            TrayNotification tray = new TrayNotification("ERROR", "Debe seleccionar un Usuario", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("ERROR", "Debe seleccionar un usuario", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.POPUP);
             tray.showAndDismiss(Duration.seconds(1));
         }
@@ -109,7 +115,7 @@ public class ControladorUsuario implements Initializable {
 
             if (txtID.getText().isEmpty()) {
 
-                TrayNotification tray = new TrayNotification("MODIFICAR", "Debe seleccionar un Usuario", NotificationType.ERROR);
+                TrayNotification tray = new TrayNotification("MODIFICAR", "Debe seleccionar un usuario", NotificationType.ERROR);
                 tray.setAnimationType(AnimationType.POPUP);
                 tray.showAndDismiss(Duration.seconds(1));
             } else {
@@ -120,13 +126,13 @@ public class ControladorUsuario implements Initializable {
         public void eliminarUsuario(){
             if(txtID.getText().isEmpty())
             {
-                TrayNotification tray = new TrayNotification("Eliminar", "Debe seleccionar un Usuario", NotificationType.ERROR);
+                TrayNotification tray = new TrayNotification("Eliminar", "Debe seleccionar un usuario", NotificationType.ERROR);
                 tray.setAnimationType(AnimationType.POPUP);
                 tray.showAndDismiss(Duration.seconds(1)); 
             }
             else{
               CallableStatement  procedimiento;
-              if (FxDialogs.showConfirm("Eliminar Usuario", "Desea eliminar el Usuario seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
+              if (FxDialogs.showConfirm("Eliminar Usuario", "¿Desea eliminar el Usuario seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
                         try {
                         procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_EliminarUsuario(?)}");
                         procedimiento.setString(1, txtID.getText());

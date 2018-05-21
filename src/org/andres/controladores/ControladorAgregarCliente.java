@@ -9,50 +9,33 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.util.Duration;
-import org.andres.recursos.FxDialogs;
-import org.andres.reportes.GenerarReporte;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
-/**
- *
- * @author d5
- */
 public class ControladorAgregarCliente implements Initializable {
     @FXML private TextField txtRazonSocial;
-    private TextField txtDireccion;
-    private TextField txtEmail;
-    private TextField txtTelefono;
+    @FXML private TextField txtDireccion;
+    @FXML private TextField txtEmail;
+    @FXML private TextField txtTelefono;
     private Principal escenarioPrincipal;
     @FXML
     private Button btnGuardar;
     @FXML
     private JFXButton btnAgregar;
-    @FXML
-    private TextField txtRazonSocial1;
-    @FXML
-    private TextField txtRazonSocial11;
-    @FXML
-    private TextField txtRazonSocial12;
-    @FXML
-    private TextField txtRazonSocial2;
-    @FXML
-    private TextField txtRazonSocial21;
-    @FXML
-    private TextField txtRazonSocial22;
-    @FXML
-    private TextField txtRazonSocial13;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -93,22 +76,22 @@ public class ControladorAgregarCliente implements Initializable {
     }
     public void validarCamposGuardar() {
         if (txtRazonSocial.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un nombre", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una razon social", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtRazonSocial.requestFocus();
         } else if (txtDireccion.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un Apellido", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una direccion", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtDireccion.requestFocus();
-        } else if (txtEmail.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un Email", NotificationType.ERROR);
+        } else if (!validarEmail()) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un Email valido", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtEmail.requestFocus();
-        } else if (txtTelefono.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un numero telefonico", NotificationType.ERROR);
+        } else if (!validarTelefono()) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un numero telefonico valido", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtTelefono.requestFocus();
@@ -116,11 +99,47 @@ public class ControladorAgregarCliente implements Initializable {
             guardarCliente();
         }
     }
-     public void validarTxtTele() {
+  /*  public void validarTxtTele() {
+
         if (!txtTelefono.getText().matches("\\d*")) {
             txtTelefono.clear();
         }
+    }*/
+    
+    public boolean validarEmail() {
+
+        String regex = "^[\\w-_ .]+@{1}[\\w]+.{1}[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(txtEmail.getText());
+
+        return matcher.matches();
     }
+    
+    public boolean validarTelefono() {
+
+        String regex = "^[\\d]{8}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(txtTelefono.getText());
+
+        return matcher.matches();
+    }
+    
+    public void limitTextField() {
+        int  limit =8;
+        UnaryOperator<TextFormatter.Change> textLimitFilter = change -> {
+            if (change.isContentChange()) {
+                int newLength = change.getControlNewText().length();
+                if (newLength > limit) {
+                    String trimmedText = change.getControlNewText().substring(0, limit);
+                    change.setText(trimmedText);
+                    int oldLength = change.getControlText().length();
+                    change.setRange(0, oldLength);
+                }
+            }
+            return change;
+        };
+        txtTelefono.setTextFormatter(new TextFormatter(textLimitFilter));
+    } 
 
      
 }

@@ -10,8 +10,10 @@ import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import org.andres.bean.Usuario;
 import org.andres.sistema.Principal;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -24,12 +26,21 @@ import tray.notification.TrayNotification;
 public class ControladorVentanaPrincipal implements Initializable {
     
     @FXML private ImageView imgFondo;
+    @FXML private Label labelUserAuth;
     private Principal escenarioPrincipal;
+    private Usuario userAuth;
     private TrayNotification tray = new TrayNotification();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         transiciones();
+
     }
+    
+    public void setUserAuth(Usuario userAuth){
+        this.userAuth = userAuth;
+        labelUserAuth.setText(userAuth.getUser());
+    }
+    
        public void transiciones(){
        FadeTransition trancicion = new FadeTransition(Duration.seconds(2), imgFondo);
        trancicion.setFromValue(1.0);

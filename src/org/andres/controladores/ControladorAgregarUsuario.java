@@ -13,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
-import org.andres.bean.Departamento;
 import org.andres.bean.Rol;
 import org.andres.bean.Usuario;
 import org.andres.sistema.Principal;
@@ -104,6 +103,27 @@ public class ControladorAgregarUsuario implements Initializable{
         }
     }
     
+    public boolean validarSiExisteUsuario(){
+         CallableStatement procedimiento;
+         ResultSet usuario;
+
+        try {
+            procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_validarSiExisteUsuario(?)}");
+            
+                procedimiento.setString(1, txtNombreUsuario.getText());
+                procedimiento.execute();
+                
+                usuario = procedimiento.getResultSet();
+                usuario.next();
+                if(usuario.getString(1).equals("si")){
+                    return true;
+                }                                 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
     public boolean seleccionarItemRol(){
         
         String role = txtRol.getValue().toString();
@@ -129,7 +149,7 @@ public class ControladorAgregarUsuario implements Initializable{
             tray.showAndDismiss(Duration.seconds(1));
             txtNombre.requestFocus();
         } else if (txtApellido.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un Apellido", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un apellido", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtApellido.requestFocus();
@@ -138,13 +158,18 @@ public class ControladorAgregarUsuario implements Initializable{
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtNombreUsuario.requestFocus();
-        } else if (txtPassword.getText().isEmpty()) {
+        }else if (validarSiExisteUsuario()) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "El usuario ya existe ingrese otro nombre de usuario", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtNombreUsuario.requestFocus();
+        }else if (txtPassword.getText().isEmpty()) {
             TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una contraseña", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtPassword.requestFocus();
         } else if (seleccionarItemRol()) {
-            TrayNotification tray = new TrayNotification("GUARDAR", "Por favor seleccione un Rol", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes seleccione un Rol", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtRol.requestFocus();

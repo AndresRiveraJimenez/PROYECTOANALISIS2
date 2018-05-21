@@ -4,8 +4,6 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,14 +11,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import org.andres.bean.Clientes;
+import org.andres.bean.Usuario;
 import org.andres.recursos.FxDialogs;
-import org.andres.reportes.GenerarReporte;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
 import tray.animations.AnimationType;
@@ -40,10 +39,16 @@ public class ControladorClientes implements Initializable {
     @FXML private TextField txtEmail;
     @FXML private TextField txtTelefono;
     @FXML private TextField txtSearch;
+    @FXML private Label labelUserAuth;
+    private Usuario userAuth;
     private ObservableList<Clientes> listaClientes;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mostrarDatos();
+    }
+    public void setUserAuth(Usuario userAuth){
+        this.userAuth = userAuth;
+        labelUserAuth.setText(userAuth.getUser());
     }
     public void mostrarDatos(){
         tblClientes.setItems(getListaClientes());

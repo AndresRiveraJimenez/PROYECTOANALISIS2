@@ -6,13 +6,11 @@
 package org.andres.controladores;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import org.andres.reportes.GenerarReporte;
+import javafx.scene.control.Label;
+import org.andres.bean.Usuario;
 import org.andres.sistema.Principal;
 
 /**
@@ -20,10 +18,18 @@ import org.andres.sistema.Principal;
  * @author d5
  */
 public class ControladorReportes implements Initializable{
+    
+    @FXML private Label labelUserAuth;
+    private Usuario userAuth;
     private Principal escenarioPrincipal;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    }
+    
+    public void setUserAuth(Usuario userAuth){
+        this.userAuth = userAuth;
+        labelUserAuth.setText(userAuth.getUser());
     }
 
     public Principal getEscenarioPrincipal() {

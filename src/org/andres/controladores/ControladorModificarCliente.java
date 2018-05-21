@@ -11,9 +11,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.util.Duration;
 import org.andres.bean.Clientes;
 import org.andres.sistema.Principal;
@@ -106,4 +110,69 @@ public class ControladorModificarCliente implements Initializable {
             ex.printStackTrace();
         }
     }
+    
+    public void validarCamposGuardar() {
+        if (txtRazonSocial.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("ACTUALIZAR", "Debes ingresar una razon social", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtRazonSocial.requestFocus();
+        } else if (txtDireccion.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("ACTUALIZAR", "Debes ingresar una direccion", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtDireccion.requestFocus();
+        } else if (!validarEmail()) {
+            TrayNotification tray = new TrayNotification("ACTUALIZAR", "Debes ingresar un Email valido", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtEmail.requestFocus();
+        } else if (!validarTelefono()) {
+            TrayNotification tray = new TrayNotification("ACTUALIZAR", "Debes ingresar un numero telefonico valido", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtTelefono.requestFocus();
+        }  else {
+            actualizarCliente();
+        }
+    }
+        
+    public boolean validarEmail() {
+
+        String regex = "^[\\w-_ .]+@{1}[\\w]+.{1}[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(txtEmail.getText());
+
+        return matcher.matches();
+    }
+    
+    public boolean validarTelefono() {
+
+        String regex = "^[\\d]{8}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(txtTelefono.getText());
+
+        return matcher.matches();
+    }
+    
+    public void limitTextField() {
+        int  limit =8;
+        UnaryOperator<TextFormatter.Change> textLimitFilter = change -> {
+            if (change.isContentChange()) {
+                int newLength = change.getControlNewText().length();
+                if (newLength > limit) {
+                    String trimmedText = change.getControlNewText().substring(0, limit);
+                    change.setText(trimmedText);
+                    int oldLength = change.getControlText().length();
+                    change.setRange(0, oldLength);
+                }
+            }
+            return change;
+        };
+        txtTelefono.setTextFormatter(new TextFormatter(textLimitFilter));
+    } 
+
+    
+    
+    
 }

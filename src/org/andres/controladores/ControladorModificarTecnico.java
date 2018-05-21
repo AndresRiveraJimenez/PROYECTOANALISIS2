@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.util.Duration;
 import org.andres.bean.Departamento;
 import org.andres.bean.Tecnico;
@@ -148,17 +150,17 @@ public class ControladorModificarTecnico implements Initializable {
             tray.showAndDismiss(Duration.seconds(1));
             txtNombre.requestFocus();
         } else if (txtApellido.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("Actualizado", "Debes ingresar un Apellido", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("Actualizado", "Debes ingresar un apellido", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtApellido.requestFocus();
         } else if (!validarTelefono()) {
-            TrayNotification tray = new TrayNotification("Actualizado", "El numero de telefono parece no ser valido", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("Actualizado", "Debes ingresar un numero de telefono valido", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtTelefono.requestFocus();
         } else if (!validarEmail()) {
-            TrayNotification tray = new TrayNotification("Actualizado", "Pueda ser que el correo no ser valido", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("Actualizado", "Debes ingresar un correo valido", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtEmail.requestFocus();
@@ -189,6 +191,23 @@ public class ControladorModificarTecnico implements Initializable {
         Matcher matcher = pattern.matcher(txtTelefono.getText());
 
         return matcher.matches();
+    }
+   
+    public void limitTextField() {
+        int limit = 8;
+        UnaryOperator<TextFormatter.Change> textLimitFilter = change -> {
+            if (change.isContentChange()) {
+                int newLength = change.getControlNewText().length();
+                if (newLength > limit) {
+                    String trimmedText = change.getControlNewText().substring(0, limit);
+                    change.setText(trimmedText);
+                    int oldLength = change.getControlText().length();
+                    change.setRange(0, oldLength);
+                }
+            }
+            return change;
+        };
+        txtTelefono.setTextFormatter(new TextFormatter(textLimitFilter));
     }
 
 }

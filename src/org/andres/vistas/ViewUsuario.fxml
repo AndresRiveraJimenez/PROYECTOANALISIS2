@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="597.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorUsuario">
+<AnchorPane prefHeight="597.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.andres.controladores.ControladorUsuario">
    <children>
       <Pane layoutX="6.0" prefHeight="46.0" prefWidth="1110.0" style="-fx-background-color: #3d9bc2;">
          <children>
-            <Label layoutX="1006.0" layoutY="20.0" prefHeight="27.0" prefWidth="91.0" text="usuario" textFill="#f8f8f8">
+            <Label fx:id="labelUserAuth" layoutX="1006.0" layoutY="20.0" prefHeight="27.0" prefWidth="91.0" textFill="#f8f8f8">
                <font>
                   <Font name="Comfortaa Regular" size="22.0" />
                </font>
@@ -48,13 +48,13 @@
             <TableColumn fx:id="colRole" prefWidth="167.0" text="Rol" />
         </columns>
       </TableView>
-      <Label layoutX="822.0" layoutY="139.0" text="ID" />
+      <Label layoutX="822.0" layoutY="139.0" text="ID:" />
       <TextField fx:id="txtID" layoutX="858.0" layoutY="135.0" prefHeight="25.0" prefWidth="91.0" />
-      <Label layoutX="785.0" layoutY="182.0" text="Nombre" />
+      <Label layoutX="785.0" layoutY="182.0" text="Nombre:" />
       <TextField fx:id="txtNombre" layoutX="855.0" layoutY="179.0" prefHeight="25.0" prefWidth="229.0" />
-      <Label layoutX="787.0" layoutY="220.0" text="Apellido" />
+      <Label layoutX="787.0" layoutY="220.0" text="Apellido:" />
       <TextField fx:id="txtApellido" layoutX="855.0" layoutY="220.0" prefHeight="25.0" prefWidth="229.0" />
-      <Label layoutX="759.0" layoutY="271.0" text="Nombre Usuario" />
+      <Label layoutX="759.0" layoutY="271.0" text="Nombre Usuario:" />
       <TextField fx:id="txtNombreUsuario" layoutX="855.0" layoutY="263.0" prefHeight="25.0" prefWidth="229.0" />
       <TextField fx:id="txtSearch" layoutX="515.0" layoutY="58.0" prefHeight="25.0" prefWidth="213.0" promptText="Buscar..." />
       <Label layoutX="895.0" layoutY="71.0" text="DETALLES">
@@ -69,7 +69,7 @@
          </font>
       </Label>
       <TextField fx:id="txtRol" layoutX="855.0" layoutY="315.0" prefHeight="25.0" prefWidth="229.0" />
-      <Label layoutX="810.0" layoutY="319.0" text="Role" />
+      <Label layoutX="810.0" layoutY="319.0" text="Role:" />
       <Separator layoutX="906.0" layoutY="372.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
       <JFXButton layoutX="914.0" layoutY="372.0" onAction="#modificarUsuario" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2980b9;" text="&#10;&#10;&#10;">
          <graphic>

@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -20,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import org.andres.bean.Boleta;
 import org.andres.bean.Clientes;
+import org.andres.bean.Usuario;
 import org.andres.recursos.FxDialogs;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
@@ -52,7 +54,8 @@ public class ControladorBoleta implements Initializable {
     @FXML private TextField txtCliente;
     @FXML private TextField txtTecnico;
     @FXML private TextArea txtDescripcion;
-   
+    @FXML private Label labelUserAuth;
+    private Usuario userAuth;
     private ObservableList<Boleta> listaBoletas;
     
     
@@ -61,6 +64,10 @@ public class ControladorBoleta implements Initializable {
         mostrarDatos();
     }
 
+    public void setUserAuth(Usuario userAuth){
+        this.userAuth = userAuth;
+        labelUserAuth.setText(userAuth.getUser());
+    }
     public void mostrarDatos() {
         tblBoletas.setItems(getListaBoletas());
         colIDBoleta.setCellValueFactory(new PropertyValueFactory<Boleta, String>("idBoleta"));
@@ -141,7 +148,7 @@ public class ControladorBoleta implements Initializable {
             txtCliente.setText(tblBoletas.getSelectionModel().getSelectedItem().getCliente().getRazonSocial());
             txtTecnico.setText(tblBoletas.getSelectionModel().getSelectedItem().getTecnico());
         } else {
-            TrayNotification tray = new TrayNotification("ERROR", "Debe seleccionar un Tecnico", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("ERROR", "Debe seleccionar una boleta", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.POPUP);
             tray.showAndDismiss(Duration.seconds(1));
         }
@@ -155,7 +162,7 @@ public class ControladorBoleta implements Initializable {
     public void modificarBoleta() {
         if (txtID.getText().isEmpty()) {
 
-            TrayNotification tray = new TrayNotification("MODIFICAR", "Debe seleccionar una Boleta", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("MODIFICAR", "Debe seleccionar una boleta", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.POPUP);
             tray.showAndDismiss(Duration.seconds(1));
         } else {
@@ -166,12 +173,12 @@ public class ControladorBoleta implements Initializable {
     
     public void eliminarBoleta() {
         if (txtID.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("Eliminar", "Debe seleccionar una Boleta", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("Eliminar", "Debe seleccionar una boleta", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.POPUP);
             tray.showAndDismiss(Duration.seconds(1));
         } else {
             CallableStatement procedimiento;
-            if (FxDialogs.showConfirm("Eliminar BOleta", "Desea eliminar la boleta seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
+            if (FxDialogs.showConfirm("Eliminar Boleta", "¿Desea eliminar la boleta seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
                 try {
                     procedimiento = (CallableStatement) Conexion.getInstancia().getConexion().prepareCall("{call sp_EliminarBoleta(?)}");
                     procedimiento.setString(1, txtID.getText());

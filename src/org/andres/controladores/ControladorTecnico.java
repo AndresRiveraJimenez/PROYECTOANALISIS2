@@ -12,12 +12,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import org.andres.bean.Tecnico;
+import org.andres.bean.Usuario;
 import org.andres.recursos.FxDialogs;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
@@ -45,7 +47,8 @@ public class ControladorTecnico implements Initializable{
     @FXML private TextField txtUsuarioD;
     @FXML private TextField txtDepartamento;
     @FXML private TextField txtSearch;
-   
+    @FXML private Label labelUserAuth;
+    private Usuario userAuth;
     private ObservableList<Tecnico> listaTecnicos;
    
     @Override
@@ -53,12 +56,16 @@ public class ControladorTecnico implements Initializable{
         mostrarDatos();
     }
     
+    public void setUserAuth(Usuario userAuth){
+        this.userAuth = userAuth;
+        labelUserAuth.setText(userAuth.getUser());
+    }
     public void mostrarDatos() {
         tblTecnicos.setItems(getListaTecnicos());
         colIdTecnico.setCellValueFactory(new PropertyValueFactory<Tecnico, Integer>("idTecnico"));
         colNombre.setCellValueFactory(new PropertyValueFactory<Tecnico, String>("nombre"));
         colApellido.setCellValueFactory(new PropertyValueFactory<Tecnico, String>("apellido"));
-        colTelefono.setCellValueFactory(new PropertyValueFactory<Tecnico, String>("numero"));
+        colTelefono.setCellValueFactory(new PropertyValueFactory<Tecnico, String>("telefono"));
         colCorreo.setCellValueFactory(new PropertyValueFactory<Tecnico, String>("correo"));
         colUsuarioD.setCellValueFactory(new PropertyValueFactory<Tecnico, String>("usuarioD"));
         colDepartamento.setCellValueFactory(new PropertyValueFactory<Tecnico, String>("departamento"));
@@ -117,7 +124,7 @@ public class ControladorTecnico implements Initializable{
 
             if (txtID.getText().isEmpty()) {
 
-                TrayNotification tray = new TrayNotification("MODIFICAR", "Debe seleccionar un Tecnico", NotificationType.ERROR);
+                TrayNotification tray = new TrayNotification("ERROR", "Debe seleccionar un Tecnico", NotificationType.ERROR);
                 tray.setAnimationType(AnimationType.POPUP);
                 tray.showAndDismiss(Duration.seconds(1));
             } else {
@@ -134,7 +141,7 @@ public class ControladorTecnico implements Initializable{
             }
             else{
               CallableStatement  procedimiento;
-              if (FxDialogs.showConfirm("Eliminar Tecnico", "Desea eliminar el Tecnico seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
+              if (FxDialogs.showConfirm("Eliminar Tecnico", "¿Desea eliminar el Tecnico seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
                         try {
                         procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_EliminarTecnico(?)}");
                         procedimiento.setString(1, txtID.getText());

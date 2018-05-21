@@ -14,9 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
-import org.andres.bean.Departamento;
 import org.andres.bean.Rol;
-import org.andres.bean.Tecnico;
 import org.andres.bean.Usuario;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
@@ -141,6 +139,31 @@ public class ControladorModificarUsuario implements Initializable{
         }
     }
     
+    public boolean validarSiExisteUsuario(){
+        
+        if(txtNombreUsuario.getText().equals(usuarioModificar.getUser())){
+            return false;
+        }
+        CallableStatement procedimiento;
+        ResultSet usuario;
+
+        try {
+            procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_validarSiExisteUsuario(?)}");
+            
+                procedimiento.setString(1, txtNombreUsuario.getText());
+                procedimiento.execute();
+                
+                usuario = procedimiento.getResultSet();
+                usuario.next();
+                if(usuario.getString(1).equals("si")){
+                    return true;
+                }                                 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
     public void validarCamposActualizar() {
         if (txtNombre.getText().isEmpty()) {
             TrayNotification tray = new TrayNotification("Actualizado", "Debes ingresar un nombre", NotificationType.ERROR);
@@ -154,6 +177,11 @@ public class ControladorModificarUsuario implements Initializable{
             txtApellido.requestFocus();
         } else if (txtNombreUsuario.getText().isEmpty()) {
             TrayNotification tray = new TrayNotification("Actualizado", "Debes ingresar un nombre de usuario", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtNombreUsuario.requestFocus();
+        }else if (validarSiExisteUsuario()) {
+            TrayNotification tray = new TrayNotification("Actualizado", "El usuario ya existe ingrese otro nombre de usuario", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtNombreUsuario.requestFocus();

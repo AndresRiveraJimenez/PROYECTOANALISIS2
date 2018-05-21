@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.andres.bean.Usuario;
 import org.andres.controladores.ControladorAgregarBoleta;
 import org.andres.controladores.ControladorAgregarCliente;
 import org.andres.controladores.ControladorAgregarTecnico;
@@ -36,6 +37,7 @@ public class Principal extends Application{
     private Stage escenario;
     private  Stage dialog;
      private  Stage dialog2;
+    private Usuario userAuth; 
 
     public Stage getDialog2() {
         return dialog2;
@@ -49,13 +51,17 @@ public class Principal extends Application{
         this.dialog = dialog;
     }
     
+    public void setUserAuth(Usuario usuarioAuth){
+        this.userAuth = usuarioAuth;
+    }
+    
     @Override
     public void start(Stage escenario) throws Exception {
       this.escenario = escenario;
       this.escenario.getIcons().add(new Image("/org/andres/recursos/icono app.png"));
       this.escenario.initStyle(StageStyle.UNDECORATED);
       this.escenario.centerOnScreen();
-      ventanaPrincipal();
+      ventanaSplash();
       this.escenario.show();
     }
     public void cerrar(){
@@ -87,6 +93,7 @@ public class Principal extends Application{
         try {
                 ControladorVentanaPrincipal ventanaPrincipal = (ControladorVentanaPrincipal) cambiarEscena("ViewPrincipal2.fxml", 957, 565);
                 ventanaPrincipal.setEscenarioPrincipal(this);
+                ventanaPrincipal.setUserAuth(userAuth);
                 this.escenario.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,6 +103,7 @@ public class Principal extends Application{
         try {
                 ControladorClientes ventanaClientes = (ControladorClientes)cambiarEscena("ViewClientes.fxml",1110 ,597);
                 ventanaClientes.setEscenarioPrincipal(this);
+                ventanaClientes.setUserAuth(userAuth);
                 this.escenario.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
@@ -141,6 +149,7 @@ public class Principal extends Application{
         try {
             ControladorTecnico ventanaTecnicos = (ControladorTecnico)cambiarEscena("ViewTecnicos.fxml",1110 ,597);
             ventanaTecnicos.setEscenarioPrincipal(this);
+            ventanaTecnicos.setUserAuth(userAuth);
             this.escenario.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
@@ -187,6 +196,7 @@ public class Principal extends Application{
         try {
             ControladorBoleta ventanaBoleta = (ControladorBoleta)cambiarEscena("ViewBoleta.fxml",1110 ,597);
             ventanaBoleta.setEscenarioPrincipal(this);
+            ventanaBoleta.setUserAuth(userAuth);
             this.escenario.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
@@ -234,6 +244,7 @@ public class Principal extends Application{
         try {
             ControladorUsuario ventanaUsuario = (ControladorUsuario) cambiarEscena("ViewUsuario.fxml", 1110, 597);
             ventanaUsuario.setEscenarioPrincipal(this);
+            ventanaUsuario.setUserAuth(userAuth);
             this.escenario.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
@@ -281,6 +292,7 @@ public class Principal extends Application{
         try {
                 ControladorReportes ventanaReportes = (ControladorReportes)cambiarEscena("ViewReportes.fxml",1110 ,597);
                 ventanaReportes.setEscenarioPrincipal(this);
+                ventanaReportes.setUserAuth(userAuth);
                 this.escenario.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
@@ -307,6 +319,7 @@ public class Principal extends Application{
         try {
                 ControladorDashboardAsignaciones ventanaDashAsig = (ControladorDashboardAsignaciones)cambiarEscena("ViewDashboard.fxml",998,597);
                 ventanaDashAsig.setEscenarioPrincipal(this);
+                ventanaDashAsig.setUserAuth(userAuth);
                 this.escenario.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();

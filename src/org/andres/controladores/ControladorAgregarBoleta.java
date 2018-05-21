@@ -27,7 +27,7 @@ import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
 public class ControladorAgregarBoleta implements Initializable {
-       private Principal escenarioPrincipal;
+    private Principal escenarioPrincipal;
 
     @FXML private DatePicker txtFechaVisita;
     @FXML private TextField txtHoraEntrada;
@@ -136,67 +136,51 @@ public class ControladorAgregarBoleta implements Initializable {
             ex.printStackTrace();
         }
     }
-    
-   /* public Clientes buscarCliente(int idClienteModificar) {
-        Clientes resultado = null;
-        try {
-            PreparedStatement procedimiento = (PreparedStatement) Conexion.getInstancia().getConexion().prepareStatement("{call sp_BuscarCliente(?)}");
-            procedimiento.setInt(1, idClienteModificar);
-            ResultSet cliente = procedimiento.executeQuery();
-            while (cliente.next()) {
-                resultado = new Clientes(cliente.getInt("idCliente"), cliente.getString("razonSocial"),cliente.getString("telefono"),cliente.getString("correo"), cliente.getString("direccion"), 1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return resultado;
-    }*/
-    
-    
+         
     public void validarCamposGuardar() {
                     
         if (txtFechaVisita.getValue() == null) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes ingresar un Fecha de visita", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un fecha de visita", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtFechaVisita.requestFocus();
         } else if (txtHoraEntrada.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes ingresar una hora entra", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una hora entrada valida", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtHoraEntrada.requestFocus();
         } else if (!validarHorayMinutos(txtHoraEntrada.getText())) {
-            TrayNotification tray = new TrayNotification("ERROR", "Parece que la hora de entrada no es valida", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una hora de entrada valida", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtHoraEntrada.requestFocus();
         } else if (txtHoraSalida.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes ingresar una hora salida", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una hora salida valida", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtHoraSalida.requestFocus();
         } else if (!validarHorayMinutos(txtHoraSalida.getText())) {
-            TrayNotification tray = new TrayNotification("ERROR", "Parece que la hora de salida no es valida", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una hora salida valida", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtHoraSalida.requestFocus();
         } else if (txtMotivo.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes ingresar un Motivo", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un motivo", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtMotivo.requestFocus();
         } else if (seleccionarItemCliente()) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes selecionar un cliente", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes selecionar un cliente", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtCliente.requestFocus();
         }  else if (seleccionarItemTecnico()) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes selecionar un tecnico", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes selecionar un tecnico", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtTecnico.requestFocus();
         } else if (txtDescripcion.getText().isEmpty()) {
-            TrayNotification tray = new TrayNotification("ERROR", "Debes ingresar una descripcion", NotificationType.ERROR);
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una descripcion", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtDescripcion.requestFocus();

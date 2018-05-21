@@ -17,7 +17,7 @@
       </ImageView>
       <TextField fx:id="txtUser" layoutX="412.0" layoutY="212.0" promptText="Usuario" />
       <PasswordField fx:id="txtPass" layoutX="593.0" layoutY="212.0" promptText="Contraseña" />
-      <JFXButton layoutX="551.0" layoutY="253.0" onAction="#validarUsuario" prefHeight="24.0" prefWidth="88.0" style="-fx-background-color: #00a3d3;" text="Aceptar" textFill="WHITE">
+      <JFXButton layoutX="551.0" layoutY="253.0" onAction="#validarCampos" prefHeight="24.0" prefWidth="88.0" style="-fx-background-color: #00a3d3;" text="Aceptar" textFill="WHITE">
          <font>
             <Font name="Comfortaa Regular" size="12.0" />
          </font>
