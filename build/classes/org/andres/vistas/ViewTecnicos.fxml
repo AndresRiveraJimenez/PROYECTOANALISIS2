@@ -81,7 +81,7 @@
             <Image url="@../recursos/icons8-más-filled-100%20(1).png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="856.0" layoutY="432.0" onAction="#agregarTecnico" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2ecc71;" text="&#10;&#10;&#10;">
+      <JFXButton fx:id="btnAgregar" layoutX="856.0" layoutY="432.0" onAction="#agregarTecnico" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2ecc71;" text="&#10;&#10;&#10;">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -93,8 +93,8 @@
             <Tooltip autoHide="true" text="Agregar tecnico" />
          </tooltip>
       </JFXButton>
-      <Separator layoutX="913.0" layoutY="433.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
-      <JFXButton layoutX="921.0" layoutY="432.0" onAction="#modificarTecnico" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2980b9;" text="&#10;&#10;&#10;">
+      <Separator fx:id="separadorUno" layoutX="913.0" layoutY="433.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
+      <JFXButton fx:id="btnModificar" layoutX="921.0" layoutY="432.0" onAction="#modificarTecnico" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2980b9;" text="&#10;&#10;&#10;">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -106,8 +106,8 @@
             <Tooltip autoHide="true" text="Modificar tecnico" />
          </tooltip>
       </JFXButton>
-      <Separator layoutX="978.0" layoutY="433.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
-      <JFXButton layoutX="984.0" layoutY="432.0" onAction="#eliminarTecnico" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #e74c3c;" text="&#10;&#10;&#10;">
+      <Separator fx:id="separadorDos" layoutX="978.0" layoutY="433.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
+      <JFXButton fx:id="btnEliminar" layoutX="984.0" layoutY="432.0" onAction="#eliminarTecnico" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #e74c3c;" text="&#10;&#10;&#10;">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>

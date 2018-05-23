@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -19,14 +20,18 @@ import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
-/**
- *
- * @author d5
- */
 public class ControladorVentanaPrincipal implements Initializable {
     
     @FXML private ImageView imgFondo;
     @FXML private Label labelUserAuth;
+    
+    @FXML private Button btnClientes;
+    @FXML private Button btnTecnicos;
+    @FXML private Button btnBoletas;
+    @FXML private Button btnDashboard;
+    @FXML private Button btnReportes;
+    @FXML private Button btnUsuarios;
+    
     private Principal escenarioPrincipal;
     private Usuario userAuth;
     private TrayNotification tray = new TrayNotification();
@@ -36,9 +41,18 @@ public class ControladorVentanaPrincipal implements Initializable {
 
     }
     
+    public void deshabilitarBotton(){
+        this.btnDashboard.setDisable(true);
+        this.btnReportes.setDisable(true);
+        this.btnUsuarios.setDisable(true);
+    }
+    
     public void setUserAuth(Usuario userAuth){
         this.userAuth = userAuth;
         labelUserAuth.setText(userAuth.getUser());
+        if(this.userAuth.getRol().getIdRol() == 2){
+            deshabilitarBotton();
+        }
     }
     
        public void transiciones(){

@@ -30,7 +30,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="145.0" layoutY="105.0" onAction="#mostrarClientes" onMouseClicked="#mostrarClientes" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #ff9f00;" text="&#10;&#10; &#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="btnClientes" buttonType="RAISED" ellipsisString="" layoutX="145.0" layoutY="105.0" onAction="#mostrarClientes" onMouseClicked="#mostrarClientes" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #ff9f00;" text="&#10;&#10; &#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>
@@ -42,7 +42,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="375.0" layoutY="105.0" onAction="#mostrarTecnicos" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #8ac349;" text="&#10;&#10;&#10;&#10;&#10;&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="btnTecnicos" buttonType="RAISED" ellipsisString="" layoutX="375.0" layoutY="105.0" onAction="#mostrarTecnicos" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #8ac349;" text="&#10;&#10;&#10;&#10;&#10;&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>
@@ -54,7 +54,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="605.0" layoutY="105.0" onAction="#mostrarBoletas" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #02746c;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
+      <JFXButton fx:id="btnBoletas" buttonType="RAISED" ellipsisString="" layoutX="605.0" layoutY="105.0" onAction="#mostrarBoletas" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #02746c;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>
@@ -66,7 +66,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="145.0" layoutY="306.0" onAction="#mostrarDashAsignaciones" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #1c344e;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
+      <JFXButton fx:id="btnDashboard" buttonType="RAISED" ellipsisString="" layoutX="145.0" layoutY="306.0" onAction="#mostrarDashAsignaciones" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #1c344e;" text="&#10;&#10;&#10;&#10;" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>
@@ -78,7 +78,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="375.0" layoutY="307.0" onAction="#mostrarReportes" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #ef5282;" text="CLIENTES" textFill="WHITE">
+      <JFXButton fx:id="btnReportes" buttonType="RAISED" ellipsisString="" layoutX="375.0" layoutY="307.0" onAction="#mostrarReportes" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #ef5282;" text="                                                                                                                                                          " textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>
@@ -90,7 +90,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" ellipsisString="" layoutX="605.0" layoutY="306.0" onAction="#mostrarUsuario" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #05518d;" text="&#10;&#10;&#10;&#10;&#10;" textFill="WHITE">
+      <JFXButton fx:id="btnUsuarios" buttonType="RAISED" ellipsisString="" layoutX="605.0" layoutY="306.0" onAction="#mostrarUsuario" opacity="0.72" prefHeight="147.0" prefWidth="167.0" style="-fx-background-color: #05518d;" text="&#10;&#10;&#10;&#10;&#10;" textFill="WHITE">
          <font>
             <Font name="Comfortaa Light" size="24.0" />
          </font>

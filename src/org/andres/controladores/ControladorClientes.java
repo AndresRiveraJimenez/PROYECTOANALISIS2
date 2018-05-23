@@ -11,7 +11,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -40,15 +42,34 @@ public class ControladorClientes implements Initializable {
     @FXML private TextField txtTelefono;
     @FXML private TextField txtSearch;
     @FXML private Label labelUserAuth;
+    
+    @FXML private Button btnAgregar;
+    @FXML private Button btnModificar;
+    @FXML private Button btnEliminar;
+    
+    @FXML private Separator separadorUno;
+    @FXML private Separator separadorDos;
+    
     private Usuario userAuth;
     private ObservableList<Clientes> listaClientes;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mostrarDatos();
     }
+    
+    public void ocultarButton(){
+        this.btnAgregar.setVisible(false);
+        this.btnModificar.setVisible(false);
+        this.btnEliminar.setVisible(false);
+        this.separadorUno.setVisible(false);
+        this.separadorDos.setVisible(false);
+    }
     public void setUserAuth(Usuario userAuth){
         this.userAuth = userAuth;
         labelUserAuth.setText(userAuth.getUser());
+        if (this.userAuth.getRol().getIdRol() == 2) {
+            ocultarButton();
+        }
     }
     public void mostrarDatos(){
         tblClientes.setItems(getListaClientes());

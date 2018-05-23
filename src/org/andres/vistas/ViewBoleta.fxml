@@ -71,8 +71,8 @@
             <Font name="Comfortaa Regular" size="14.0" />
          </font>
       </Label>
-      <Separator layoutX="923.0" layoutY="540.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
-      <JFXButton layoutX="931.0" layoutY="540.0" onAction="#modificarBoleta" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2980b9;" text="&#10;&#10;&#10;">
+      <Separator fx:id="separadorUno" layoutX="923.0" layoutY="540.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
+      <JFXButton fx:id="btnModificar" layoutX="931.0" layoutY="540.0" onAction="#modificarBoleta" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2980b9;" text="&#10;&#10;&#10;">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -84,8 +84,8 @@
             <Tooltip autoHide="true" text="Modificar boleta" />
          </tooltip>
       </JFXButton>
-      <Separator layoutX="988.0" layoutY="540.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
-      <JFXButton layoutX="994.0" layoutY="540.0" onAction="#eliminarBoleta" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #e74c3c;" text="&#10;&#10;&#10;">
+      <Separator fx:id="separadorDos" layoutX="988.0" layoutY="540.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
+      <JFXButton fx:id="btnEliminar" layoutX="994.0" layoutY="540.0" onAction="#eliminarBoleta" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #e74c3c;" text="&#10;&#10;&#10;">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -97,7 +97,7 @@
             <Tooltip autoHide="true" text="Eliminar boleta" />
          </tooltip>
       </JFXButton>
-      <JFXButton layoutX="866.0" layoutY="540.0" onAction="#agregarBoleta" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2ecc71;" text="&#10;&#10;&#10;">
+      <JFXButton fx:id="btnAgregar" layoutX="866.0" layoutY="540.0" onAction="#agregarBoleta" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: #2ecc71;" text="&#10;&#10;&#10;">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
