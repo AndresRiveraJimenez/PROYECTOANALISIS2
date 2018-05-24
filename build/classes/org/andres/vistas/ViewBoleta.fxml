@@ -43,12 +43,13 @@
       <TableView fx:id="tblBoletas" layoutX="6.0" layoutY="87.0" onMouseClicked="#boletaSeleccionada" prefHeight="506.0" prefWidth="734.0">
         <columns>
           <TableColumn fx:id="colIDBoleta" prefWidth="33.0" text="ID" />
+            <TableColumn fx:id="colCorrelativo" prefWidth="83.0" text="Correlativo" />
           <TableColumn fx:id="colFechaVisita" prefWidth="89.99996948242188" text="Fecha de Visita" />
             <TableColumn fx:id="colHoraEntrada" prefWidth="79.0" text="Hora Entrada" />
             <TableColumn fx:id="colHoraSalida" prefWidth="76.0" text="Hora Salida" />
             <TableColumn fx:id="colFechaCreacion" prefWidth="68.0" text="Creado" />
-            <TableColumn fx:id="colCliente" prefWidth="235.0" text="CLiente" />
-            <TableColumn fx:id="colClienteID" prefWidth="69.0" text="No Cliente" />
+            <TableColumn fx:id="colCliente" prefWidth="181.0" text="CLiente" />
+            <TableColumn fx:id="colClienteID" prefWidth="123.0" text="No Cliente" />
             <TableColumn fx:id="colTecnico" prefWidth="83.0" text="Tecnico" />
         </columns>
       </TableView>
