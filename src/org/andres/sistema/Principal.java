@@ -18,9 +18,11 @@ import org.andres.controladores.ControladorAgregarTecnico;
 import org.andres.controladores.ControladorAgregarUsuario;
 import org.andres.controladores.ControladorBoleta;
 import org.andres.controladores.ControladorClientes;
+import org.andres.controladores.ControladorCrearDashboard;
 import org.andres.controladores.ControladorDashboardAsignaciones;
 import org.andres.controladores.ControladorModificarBoleta;
 import org.andres.controladores.ControladorModificarCliente;
+import org.andres.controladores.ControladorModificarDashboard;
 import org.andres.controladores.ControladorModificarTecnico;
 import org.andres.controladores.ControladorModificarUsuario;
 import org.andres.controladores.ControladorParametrosBoletasReporte;
@@ -61,7 +63,7 @@ public class Principal extends Application{
       this.escenario.getIcons().add(new Image("/org/andres/recursos/icono app.png"));
       this.escenario.initStyle(StageStyle.UNDECORATED);
       this.escenario.centerOnScreen();
-      ventanaSplash();
+       ventanaDashboardAsig();
       this.escenario.show();
     }
     public void cerrar(){
@@ -317,13 +319,51 @@ public class Principal extends Application{
     }
     public void ventanaDashboardAsig(){
         try {
-                ControladorDashboardAsignaciones ventanaDashAsig = (ControladorDashboardAsignaciones)cambiarEscena("ViewDashboard.fxml",998,597);
+                ControladorDashboardAsignaciones ventanaDashAsig = (ControladorDashboardAsignaciones)cambiarEscena("ViewDashboard.fxml",1110,594);
                 ventanaDashAsig.setEscenarioPrincipal(this);
                 ventanaDashAsig.setUserAuth(userAuth);
                 this.escenario.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
         } 
+    }
+            public void ventanaCrearAsignacion() {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+             dialog.initStyle(StageStyle.UNDECORATED);
+             dialog.centerOnScreen();
+            setDialog(dialog);
+
+            ControladorCrearDashboard creadAsignacion = (ControladorCrearDashboard) cambiarEscenaModal("ViewCrearDashboard.fxml", 414, 377,dialog);
+            creadAsignacion.setEscenarioPrincipal(this);
+            
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL); 
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+     public void ventanaModificarAsignacion(int idAsignacion) {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+             dialog.initStyle(StageStyle.UNDECORATED);
+             dialog.centerOnScreen();
+            setDialog(dialog);
+
+            ControladorModificarDashboard modificarAsignacion = (ControladorModificarDashboard) cambiarEscenaModal("ViewModificarAsignacion.fxml", 414, 377,dialog);
+            modificarAsignacion.setEscenarioPrincipal(this);
+            modificarAsignacion.setIdAsignacion(idAsignacion);
+            
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL); 
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public Initializable cambiarEscena(String fxml, int ancho, int alto) throws IOException, Exception{
         Initializable resultado = null;

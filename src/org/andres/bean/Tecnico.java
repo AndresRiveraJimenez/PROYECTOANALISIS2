@@ -1,5 +1,7 @@
 package org.andres.bean;
 
+import groovy.transform.ToString;
+
 public class Tecnico {
     private int idTecnico;
     private String nombre;
@@ -92,8 +94,11 @@ public class Tecnico {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     
 }
