@@ -36,6 +36,7 @@ public class ControladorBoleta implements Initializable {
     private Principal escenarioPrincipal;
 
     @FXML private TableView<Boleta> tblBoletas;
+    @FXML private TableColumn colCorrelativo;
     @FXML private TableColumn colIDBoleta;
     @FXML private TableColumn colFechaVisita;
     @FXML private TableColumn colHoraEntrada;
@@ -92,6 +93,7 @@ public class ControladorBoleta implements Initializable {
     }
     public void mostrarDatos() {
         tblBoletas.setItems(getListaBoletas());
+         colCorrelativo.setCellValueFactory(new PropertyValueFactory<Boleta, String>("imagen"));
         colIDBoleta.setCellValueFactory(new PropertyValueFactory<Boleta, String>("idBoleta"));
         colFechaVisita.setCellValueFactory(new PropertyValueFactory<Boleta, String>("fechaVisitaES"));
         colHoraEntrada.setCellValueFactory(new PropertyValueFactory<Boleta, String>("horaEntrada"));
@@ -111,7 +113,7 @@ public class ControladorBoleta implements Initializable {
 
     public ObservableList<Boleta> getListaBoletas() {
     
-        ResultSet boleta = Conexion.getInstancia().hacerConsulta("select b.idBoleta, b.motivoVisita, b.fechaVisita, "
+        ResultSet boleta = Conexion.getInstancia().hacerConsulta("select b.imagen, b.idBoleta, b.motivoVisita, b.fechaVisita, "
                 + "b.horaEntrada, b.horaSalida, b.descTrabajo, b.fechaCreacion,b.imagen, c.razonSocial,b.idCliente, t.nombreTecnico, b.estado "
                 + "from Boletas b, Tecnicos t, Clientes c  where t.idTecnico = b.idTecnico and c.idCliente = b.idCliente "
                 + " and b.estado = 1");
