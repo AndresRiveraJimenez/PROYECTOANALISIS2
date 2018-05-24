@@ -35,6 +35,7 @@ public class ControladorModificarBoleta implements Initializable {
     @FXML private TextField txtHoraEntrada;
     @FXML private TextField txtHoraSalida;
     @FXML private TextField txtMotivo;
+    @FXML private TextField txtImagen;
     @FXML private ComboBox txtCliente;
     @FXML private ComboBox txtTecnico;
     @FXML private TextArea txtDescripcion;
@@ -102,6 +103,7 @@ public class ControladorModificarBoleta implements Initializable {
         txtTecnico.setValue((boletaModificar.getTecnico()));
         txtDescripcion.setText(boletaModificar.getDescripcion());
         txtFechaVisita.setValue(boletaModificar.getFechaVisita());
+        txtImagen.setText(boletaModificar.getImagen());
 
     }
     
@@ -117,7 +119,7 @@ public class ControladorModificarBoleta implements Initializable {
                         boleta.getDate("fechaVisita").toLocalDate(), boleta.getTime("horaEntrada").toLocalTime(), 
                         boleta.getTime("horaSalida").toLocalTime(), boleta.getString("descTrabajo"),
                         boleta.getDate("fechaCreacion").toLocalDate(),new Clientes(boleta.getInt("idCliente") ,boleta.getString("razonSocial")),
-                        boleta.getString("nombreTecnico"), boleta.getInt("estado"));
+                        boleta.getString("nombreTecnico"), boleta.getInt("estado"), boleta.getString("imagen"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -140,7 +142,7 @@ public class ControladorModificarBoleta implements Initializable {
     public void actualizarBoleta() {
         CallableStatement  procedimiento;
         try {
-            procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_ActualizarBoleta(?,?,?,?,?,?,?,?)}");
+            procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_ActualizarBoleta(?,?,?,?,?,?,?,?,?)}");
             
                 procedimiento.setInt(1,Integer.valueOf(txtID.getText()));
                 procedimiento.setString(2, txtMotivo.getText());
@@ -150,6 +152,7 @@ public class ControladorModificarBoleta implements Initializable {
                 procedimiento.setString(6, txtDescripcion.getText());
                 procedimiento.setInt(7, clienteEscogido);
                 procedimiento.setInt(8, tecnicoEscogido);
+                procedimiento.setString(9, txtImagen.getText());
 
                 procedimiento.execute();
                 TrayNotification tray = new TrayNotification("Actualizado", "Boleta actualizada", NotificationType.SUCCESS);
@@ -199,6 +202,11 @@ public class ControladorModificarBoleta implements Initializable {
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtDescripcion.requestFocus();
+        }else if (txtImagen.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("ACTUALIZAR", "Debes ingresar una Correlativo", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtImagen.requestFocus();
         }  else {
             seleccionarItemTecnico();
             seleccionarItemCliente();

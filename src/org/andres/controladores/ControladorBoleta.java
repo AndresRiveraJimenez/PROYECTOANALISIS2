@@ -56,6 +56,7 @@ public class ControladorBoleta implements Initializable {
     @FXML private TextField txtCliente;
     @FXML private TextField txtTecnico;
     @FXML private TextArea txtDescripcion;
+    @FXML private TextField txtImagen;
     @FXML private Label labelUserAuth;
     
     @FXML private Button btnAgregar;
@@ -111,7 +112,7 @@ public class ControladorBoleta implements Initializable {
     public ObservableList<Boleta> getListaBoletas() {
     
         ResultSet boleta = Conexion.getInstancia().hacerConsulta("select b.idBoleta, b.motivoVisita, b.fechaVisita, "
-                + "b.horaEntrada, b.horaSalida, b.descTrabajo, b.fechaCreacion, c.razonSocial,b.idCliente, t.nombreTecnico, b.estado "
+                + "b.horaEntrada, b.horaSalida, b.descTrabajo, b.fechaCreacion,b.imagen, c.razonSocial,b.idCliente, t.nombreTecnico, b.estado "
                 + "from Boletas b, Tecnicos t, Clientes c  where t.idTecnico = b.idTecnico and c.idCliente = b.idCliente "
                 + " and b.estado = 1");
         ArrayList<Boleta> lista = new ArrayList<Boleta>();
@@ -127,7 +128,7 @@ public class ControladorBoleta implements Initializable {
                         boleta.getDate("fechaCreacion").toLocalDate(),
                         new Clientes(boleta.getInt("idCliente"),boleta.getString("razonSocial")),
                         boleta.getString("nombreTecnico"),
-                        boleta.getInt("estado")));
+                        boleta.getInt("estado"), boleta.getString("imagen")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -168,6 +169,7 @@ public class ControladorBoleta implements Initializable {
             txtDescripcion.setText(tblBoletas.getSelectionModel().getSelectedItem().getDescripcion());
             txtCliente.setText(tblBoletas.getSelectionModel().getSelectedItem().getCliente().getRazonSocial());
             txtTecnico.setText(tblBoletas.getSelectionModel().getSelectedItem().getTecnico());
+            txtImagen.setText(tblBoletas.getSelectionModel().getSelectedItem().getImagen());
         } else {
             TrayNotification tray = new TrayNotification("ERROR", "Debe seleccionar una boleta", NotificationType.ERROR);
             tray.setAnimationType(AnimationType.POPUP);
@@ -199,15 +201,16 @@ public class ControladorBoleta implements Initializable {
             tray.showAndDismiss(Duration.seconds(1));
         } else {
             CallableStatement procedimiento;
-            if (FxDialogs.showConfirm("Eliminar Boleta", "¿Desea eliminar la boleta seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
+            if (FxDialogs.showConfirm("Eliminar Boleta", "¿Desea eliminar la boleta seleccionado?", FxDialogs.SI, FxDialogs.NO).equals(FxDialogs.SI)) {
                 try {
                     procedimiento = (CallableStatement) Conexion.getInstancia().getConexion().prepareCall("{call sp_EliminarBoleta(?)}");
-                    procedimiento.setString(1, txtID.getText());
+                    procedimiento.setInt(1, Integer.valueOf( txtID.getText()));
                     procedimiento.execute();
                     TrayNotification tray = new TrayNotification("ELIMINAR", "La boleta fue eliminado", NotificationType.SUCCESS);
                     tray.setAnimationType(AnimationType.POPUP);
                     tray.showAndDismiss(Duration.seconds(1));
                     mostrarDatos();
+                    limpiarDetablles();
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -215,6 +218,19 @@ public class ControladorBoleta implements Initializable {
         }
     }
 
+    public void limpiarDetablles() {
+        this.txtID.setText("");
+        this.txtFechaVisita.setText("");
+        this.txtHoraEntrada.setText("");
+        this.txtHoraSalida.setText("");
+        this.txtMotivo.setText("");
+        this.txtFechaCreada.setText("");
+        this.txtCliente.setText("");
+        this.txtTecnico.setText("");
+        this.txtDescripcion.setText("");
+        this.txtImagen.setText("");
+    }
+    
     public void cerrar() {
         escenarioPrincipal.cerrar();
     }

@@ -33,6 +33,7 @@ public class ControladorAgregarBoleta implements Initializable {
     @FXML private TextField txtHoraEntrada;
     @FXML private TextField txtHoraSalida;
     @FXML private TextField txtMotivo;
+    @FXML private TextField txtImagen;
     @FXML private ComboBox txtCliente;
     @FXML private ComboBox txtTecnico;
     @FXML private TextArea txtDescripcion;
@@ -115,7 +116,7 @@ public class ControladorAgregarBoleta implements Initializable {
 
         CallableStatement  procedimiento;
         try {
-            procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_AgregarBoleta(?,?,?,?,?,?,?)}");
+            procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_AgregarBoleta(?,?,?,?,?,?,?,?)}");
             
                 procedimiento.setString(1, txtMotivo.getText());
                 procedimiento.setDate(2, java.sql.Date.valueOf(txtFechaVisita.getValue()));
@@ -124,7 +125,8 @@ public class ControladorAgregarBoleta implements Initializable {
                 procedimiento.setString(5, txtDescripcion.getText());
                 procedimiento.setInt(6, clienteEscogido);
                 procedimiento.setInt(7, tecnicoEscogido);
-
+                procedimiento.setString(8, txtImagen.getText());
+                
                 procedimiento.execute();
                 TrayNotification tray = new TrayNotification("GUARDAR", "Boleta nuevo agregado", NotificationType.SUCCESS);
                 tray.setAnimationType(AnimationType.POPUP);
@@ -184,6 +186,11 @@ public class ControladorAgregarBoleta implements Initializable {
             tray.setAnimationType(AnimationType.FADE);
             tray.showAndDismiss(Duration.seconds(1));
             txtDescripcion.requestFocus();
+        } else if (txtImagen.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un Correlativo", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtImagen.requestFocus();
         }  else {
             guardarBoleta();
         }

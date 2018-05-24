@@ -86,7 +86,7 @@ public class FxDialogs {
         alert.showAndWait();
     }
 
-    public static final String YES = "Yes";
+    public static final String SI = "SI";
     public static final String NO = "No";
     public static final String OK = "OK";
     public static final String CANCEL = "Cancel";

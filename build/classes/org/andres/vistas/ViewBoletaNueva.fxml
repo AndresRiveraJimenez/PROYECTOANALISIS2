@@ -35,7 +35,7 @@
       <TextField fx:id="txtHoraSalida" layoutX="573.0" layoutY="70.0" prefHeight="25.0" prefWidth="114.0" />
       <Label layoutX="502.0" layoutY="74.0" prefHeight="17.0" prefWidth="69.0" text="Hora Salida:" />
       <Label layoutX="52.0" layoutY="114.0" prefHeight="17.0" prefWidth="81.0" text="Motivo:" />
-      <TextField fx:id="txtMotivo" layoutX="115.0" layoutY="110.0" prefHeight="25.0" prefWidth="575.0" />
+      <TextField fx:id="txtMotivo" layoutX="115.0" layoutY="110.0" prefHeight="25.0" prefWidth="365.0" />
       <Label layoutX="43.0" layoutY="154.0" prefHeight="17.0" prefWidth="49.0" text="Clliente:" />
       <Label layoutX="390.0" layoutY="154.0" prefHeight="17.0" prefWidth="49.0" text="Tecnico:" />
       <Label layoutX="27.0" layoutY="191.0" prefHeight="17.0" prefWidth="81.0" text="Descripcion:" />
@@ -44,5 +44,7 @@
       <TextArea fx:id="txtDescripcion" layoutX="114.0" layoutY="187.0" prefHeight="322.0" prefWidth="575.0" />
       <ComboBox fx:id="txtTecnico" layoutX="442.0" layoutY="150.0" prefWidth="248.0" visibleRowCount="5" />
       <ComboBox fx:id="txtCliente" layoutX="114.0" layoutY="150.0" prefHeight="25.0" prefWidth="248.0" visibleRowCount="5" />
+      <TextField fx:id="txtImagen" layoutX="573.0" layoutY="110.0" prefHeight="25.0" prefWidth="114.0" />
+      <Label layoutX="506.0" layoutY="114.0" prefHeight="17.0" prefWidth="69.0" text="Correlativo:" />
    </children>
 </AnchorPane>

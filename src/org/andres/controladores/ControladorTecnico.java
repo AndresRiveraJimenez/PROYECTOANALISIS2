@@ -162,15 +162,16 @@ public class ControladorTecnico implements Initializable{
             }
             else{
               CallableStatement  procedimiento;
-              if (FxDialogs.showConfirm("Eliminar Tecnico", "¿Desea eliminar el Tecnico seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
+              if (FxDialogs.showConfirm("Eliminar Tecnico", "¿Desea eliminar el Tecnico seleccionado?", FxDialogs.SI  , FxDialogs.NO).equals(FxDialogs.SI)) {
                         try {
                         procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_EliminarTecnico(?)}");
-                        procedimiento.setString(1, txtID.getText());
+                        procedimiento.setInt(1, Integer.valueOf( txtID.getText()));
                         procedimiento.execute();
                         TrayNotification tray = new TrayNotification("ELIMINAR", "El Tecnico fue eliminado", NotificationType.SUCCESS);
                         tray.setAnimationType(AnimationType.POPUP);
                         tray.showAndDismiss(Duration.seconds(1));
                         mostrarDatos();
+                        limpiarDetalle();
                         } catch (SQLException ex) {
                             ex.printStackTrace();
                         }
@@ -193,6 +194,16 @@ public class ControladorTecnico implements Initializable{
         }
     }
         
+    public void limpiarDetalle(){
+        this.txtNombre.setText("");
+        this.txtApellido.setText("");
+        this.txtEmail.setText("");
+        this.txtDepartamento.setText("");
+        this.txtID.setText("");
+        this.txtTelefono.setText("");
+        this.txtUsuarioD.setText("");
+    }
+    
     public void ventanaPrincipal() {
         escenarioPrincipal.ventanaPrincipal();
     }

@@ -17,11 +17,12 @@ public class Boleta {
     private Clientes cliente;
     private String tecnico;
     private int estado;
+    private String imagen;
 
     public Boleta() {
     }
 
-    public Boleta(int idBoleta, String motivo, LocalDate fechaVisita, LocalTime horaEntrada, LocalTime horaSalida, String descripcion, LocalDate fechaCreado, Clientes cliente, String tecnico, int estado) {
+    public Boleta(int idBoleta, String motivo, LocalDate fechaVisita, LocalTime horaEntrada, LocalTime horaSalida, String descripcion, LocalDate fechaCreado, Clientes cliente, String tecnico, int estado,String imagen) {
         this.idBoleta = idBoleta;
         this.motivo = motivo;
         this.fechaVisita = fechaVisita;
@@ -32,6 +33,7 @@ public class Boleta {
         this.cliente = cliente;
         this.tecnico = tecnico;
         this.estado = estado;
+        this.imagen = imagen;
     }
 
     public int getIdBoleta() {
@@ -129,5 +131,12 @@ public class Boleta {
     public int getIdCliente(){
         return this.cliente.getIdCliente();
     }
-    
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 }

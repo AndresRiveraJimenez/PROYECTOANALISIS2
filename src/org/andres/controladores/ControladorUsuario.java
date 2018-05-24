@@ -132,15 +132,16 @@ public class ControladorUsuario implements Initializable {
             }
             else{
               CallableStatement  procedimiento;
-              if (FxDialogs.showConfirm("Eliminar Usuario", "¿Desea eliminar el Usuario seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
+              if (FxDialogs.showConfirm("Eliminar Usuario", "¿Desea eliminar el Usuario seleccionado?", FxDialogs.SI, FxDialogs.NO).equals(FxDialogs.SI)) {
                         try {
                         procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_EliminarUsuario(?)}");
-                        procedimiento.setString(1, txtID.getText());
+                        procedimiento.setInt(1,Integer.valueOf(txtID.getText()));
                         procedimiento.execute();
                         TrayNotification tray = new TrayNotification("ELIMINAR", "El Usuario fue eliminado", NotificationType.SUCCESS);
                         tray.setAnimationType(AnimationType.POPUP);
                         tray.showAndDismiss(Duration.seconds(1));
                         mostrarDatos();
+                        limpiarDetablles();
                         } catch (SQLException ex) {
                             ex.printStackTrace();
                         }
@@ -165,6 +166,15 @@ public class ControladorUsuario implements Initializable {
         }
     }
    
+    public void limpiarDetablles() {
+        this.txtID.setText("");
+        this.txtNombre.setText("");
+        this.txtApellido.setText("");
+        this.txtNombreUsuario.setText("");
+        this.txtRol.setText("");
+        this.txtSearch.setText("");
+    }
+    
     public void agregarUsuario() {
         escenarioPrincipal.ventanaAgregarUsuario();
     }

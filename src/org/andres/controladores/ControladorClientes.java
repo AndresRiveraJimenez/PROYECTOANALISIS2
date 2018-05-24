@@ -146,7 +146,7 @@ public class ControladorClientes implements Initializable {
             }
             else{
               CallableStatement  procedimiento;
-              if (FxDialogs.showConfirm("Eliminar Cliente", "Desea eliminar el cliente seleccionado?", FxDialogs.YES, FxDialogs.NO).equals(FxDialogs.YES)) {
+              if (FxDialogs.showConfirm("Eliminar Cliente", "Desea eliminar el cliente seleccionado?", FxDialogs.SI, FxDialogs.NO).equals(FxDialogs.SI)) {
                         try {
                         procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_EliminarCliente(?)}");
                         procedimiento.setString(1, txtID.getText());
