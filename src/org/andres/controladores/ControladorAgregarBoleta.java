@@ -128,7 +128,7 @@ public class ControladorAgregarBoleta implements Initializable {
                 procedimiento.setString(8, txtImagen.getText());
                 
                 procedimiento.execute();
-                TrayNotification tray = new TrayNotification("GUARDAR", "Boleta nuevo agregado", NotificationType.SUCCESS);
+                TrayNotification tray = new TrayNotification("GUARDAR", "Boleta nueva agregado", NotificationType.SUCCESS);
                 tray.setAnimationType(AnimationType.POPUP);
                 tray.showAndDismiss(Duration.seconds(1));
                 escenarioPrincipal.ventanaBoletas();
