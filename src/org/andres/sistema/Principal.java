@@ -26,6 +26,7 @@ import org.andres.controladores.ControladorModificarDashboard;
 import org.andres.controladores.ControladorModificarTecnico;
 import org.andres.controladores.ControladorModificarUsuario;
 import org.andres.controladores.ControladorParametrosBoletasReporte;
+import org.andres.controladores.ControladorParametrosTecnicosHoras;
 import org.andres.controladores.ControladorReportes;
 import org.andres.controladores.ControladorSplashScreen;
 import org.andres.controladores.ControladorTecnico;
@@ -310,6 +311,23 @@ public class Principal extends Application{
 
             ControladorParametrosBoletasReporte parametrosRepBoletas = (ControladorParametrosBoletasReporte) cambiarEscenaModal("ViewParametrosReporteBoletas.fxml", 382, 302,dialog);
             parametrosRepBoletas.setEscenarioPrincipal(this);
+            dialog.initOwner(escenario);
+            dialog.initModality(Modality.APPLICATION_MODAL); 
+            dialog.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+                public void ventanaParametrosRepTecnicos() {
+        try {
+            escenario.setOpacity(0.95);
+            Stage dialog = new Stage();
+             dialog.initStyle(StageStyle.UNDECORATED);
+             dialog.centerOnScreen();
+                setDialog(dialog);
+
+            ControladorParametrosTecnicosHoras parametrosRepTecnicos = (ControladorParametrosTecnicosHoras) cambiarEscenaModal("ViewParametrosReporteTecnicos.fxml", 382, 302,dialog);
+            parametrosRepTecnicos.setEscenarioPrincipal(this);
             dialog.initOwner(escenario);
             dialog.initModality(Modality.APPLICATION_MODAL); 
             dialog.showAndWait();

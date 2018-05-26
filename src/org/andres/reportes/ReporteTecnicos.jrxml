@@ -11,28 +11,16 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select * from Boletas, Clientes, Tecnicos where Boletas.idCliente = Clientes.idCliente and Boletas.idTecnico = Tecnicos.idTecnico and
-			 Boletas.fechaVisita between $P{fechaInicio} and $P{fechaFinal}]]>
+		<![CDATA[SELECT a.fechaVisita, b.nombreTecnico,  DATEDIFF(MINUTE, a.horaEntrada, a.horaSalida) AS 'Horas trabajadas' FROM Boletas a, Tecnicos b, Clientes c
+		 where a.idTecnico = b.idTecnico
+		 and a.idCliente = c.idCliente
+		 and a.estado = 1
+		 and a.fechaVisita between $P{fechaInicio} and $P{fechaFinal}
+		 order by a.fechaVisita]]>
 	</queryString>
-	<field name="idBoleta" class="java.lang.Integer"/>
-	<field name="motivoVisita" class="java.lang.String"/>
 	<field name="fechaVisita" class="java.lang.String"/>
-	<field name="horaEntrada" class="java.lang.String"/>
-	<field name="horaSalida" class="java.lang.String"/>
-	<field name="descTrabajo" class="java.lang.String"/>
-	<field name="fechaCreacion" class="java.lang.String"/>
-	<field name="idCliente" class="java.lang.Integer"/>
-	<field name="idTecnico" class="java.lang.Integer"/>
-	<field name="estado" class="java.lang.Integer"/>
-	<field name="razonSocial" class="java.lang.String"/>
-	<field name="telefono" class="java.lang.String"/>
-	<field name="correo" class="java.lang.String"/>
-	<field name="direccion" class="java.lang.String"/>
 	<field name="nombreTecnico" class="java.lang.String"/>
-	<field name="apellidoTecnico" class="java.lang.String"/>
-	<field name="numeroTel" class="java.lang.String"/>
-	<field name="usuarioDominio" class="java.lang.String"/>
-	<field name="idDepto" class="java.lang.Integer"/>
+	<field name="Horas trabajadas" class="java.lang.Integer"/>
 	<background>
 		<band height="752" splitType="Stretch">
 			<image>
@@ -48,7 +36,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Comfortaa Light" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[REPORTE SEMANAL DE BOLETAS]]></text>
+				<text><![CDATA[REPORTE TECNICOS]]></text>
 			</staticText>
 			<textField pattern="yyyy.MM.dd  hh:mm aaa">
 				<reportElement x="471" y="3" width="100" height="20" forecolor="#FFFFFF" uuid="ea8a6241-29b6-415e-8205-9a66eceb0493"/>
@@ -83,78 +71,41 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="2" width="45" height="10" uuid="4e0e9b21-e8ab-4ef3-b0ef-22d956bf2416"/>
-				<textElement>
-					<font fontName="Comfortaa Light" size="8"/>
-				</textElement>
-				<text><![CDATA[ID]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="57" y="2" width="100" height="10" uuid="38486756-eee2-4868-bc5b-6ed1024a8d5a"/>
 				<textElement>
 					<font fontName="Comfortaa Light" size="8"/>
 				</textElement>
-				<text><![CDATA[Motivo]]></text>
+				<text><![CDATA[Fecha Visita]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="172" y="2" width="100" height="10" uuid="a2d7dbac-5ab1-4f91-a01b-167e21c34370"/>
 				<textElement>
 					<font fontName="Comfortaa Light" size="8"/>
 				</textElement>
-				<text><![CDATA[Fecha]]></text>
+				<text><![CDATA[Tecnico]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="290" y="1" width="100" height="11" uuid="0e326aab-0b5b-4157-99d1-54a09a6b6b0e"/>
 				<textElement>
 					<font fontName="Comfortaa Light" size="8"/>
 				</textElement>
-				<text><![CDATA[Cliente]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="411" y="2" width="100" height="10" uuid="e9405f92-2049-4fee-94d8-6b5f4263d8c2"/>
-				<textElement>
-					<font fontName="Comfortaa Light" size="8"/>
-				</textElement>
-				<text><![CDATA[Tecnico]]></text>
+				<text><![CDATA[Horas]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="16" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="45" height="16" uuid="8953809d-d3ec-4bc1-b03d-27ad3db06051"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Calibri"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{idBoleta}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="57" y="0" width="100" height="16" uuid="6e01ad1d-60e6-4b4f-a2c6-1aae952b5acb"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Calibri"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{motivoVisita}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="172" y="0" width="100" height="16" uuid="3fa72e58-ac73-4eab-8ea1-7775e903c0d8"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Calibri"/>
-				</textElement>
+				<reportElement x="57" y="0" width="100" height="16" uuid="7ede57eb-2d14-4740-ad8a-a0012a38fd13"/>
 				<textFieldExpression><![CDATA[$F{fechaVisita}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="290" y="2" width="100" height="14" uuid="a035c281-b091-4185-802e-df7593851095"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Calibri"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{razonSocial}]]></textFieldExpression>
+				<reportElement x="172" y="0" width="100" height="16" uuid="2f63fecf-42a1-458b-89ec-3542532cd2ea"/>
+				<textFieldExpression><![CDATA[$F{nombreTecnico}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="411" y="2" width="100" height="14" uuid="a8fbb483-db5a-4824-a002-282d267fc1ba"/>
-				<textElement verticalAlignment="Top">
-					<font fontName="Calibri"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nombreTecnico}]]></textFieldExpression>
+				<reportElement x="290" y="0" width="100" height="16" uuid="95bfaf2e-ffbc-442d-bc1b-03404e2b72a1"/>
+				<textFieldExpression><![CDATA[$F{Horas trabajadas}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

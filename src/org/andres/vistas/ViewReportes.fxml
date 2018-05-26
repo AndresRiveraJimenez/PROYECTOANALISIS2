@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,7 +36,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Hyperlink layoutX="99.0" layoutY="104.0" onAction="#ventanaParametros" prefHeight="23.0" prefWidth="407.0" text="Reporte de Boletas">
+      <Hyperlink layoutX="100.0" layoutY="189.0" onAction="#ventanaParametros" prefHeight="23.0" prefWidth="407.0" text="Reporte de Boletas" underline="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -44,5 +45,22 @@
       <Separator layoutX="674.0" layoutY="108.0" orientation="VERTICAL" prefHeight="483.0" prefWidth="0.0" />
       <Separator layoutX="690.0" layoutY="93.0" prefHeight="0.0" prefWidth="407.0" />
       <Label layoutX="880.0" layoutY="76.0" text="DETALLES" />
+      <TextArea editable="false" layoutX="707.0" layoutY="127.0" opacity="0.73" prefHeight="170.0" prefWidth="389.0" text="Detalla por un rango de fechas el motivo por el cual un tecnico visito&#10;a un cliente en especifico.&#10;Motivo:  razon por la que se le visito al cliente.&#10;&#10;Fecha: dia en que el tecnico visito al cliente.&#10;&#10;Cliente: entidad a quien se le visito.&#10;&#10;Tecnico: persona que visito al cliente.">
+         <font>
+            <Font name="Comfortaa Bold" size="11.0" />
+         </font>
+      </TextArea>
+      <Label layoutX="707.0" layoutY="108.0" text="Reporte de Boletas" underline="true" />
+      <Label layoutX="707.0" layoutY="333.0" text="Reporte de Tecnicos" underline="true" />
+      <TextArea editable="false" layoutX="707.0" layoutY="350.0" opacity="0.73" prefHeight="170.0" prefWidth="389.0" text="Detalla por un rango de fechas las horas de trabajo de un&#10;Tecnico segun las boletas ingresadas.&#10;Fecha:  dia laboral del Tecnico.&#10;&#10;Tecnico: persona de la cual se genera el reporte de horas.&#10;&#10;Horas: cantidad de horas trabajadas, segun la fecha.">
+         <font>
+            <Font name="Comfortaa Bold" size="11.0" />
+         </font>
+      </TextArea>
+      <Hyperlink layoutX="100.0" layoutY="424.0" onAction="#ventanaParametrosRepTec" prefHeight="23.0" prefWidth="407.0" text="Reporte de Tecnicos" underline="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>

@@ -50,4 +50,7 @@ public class ControladorReportes implements Initializable{
     public void ventanaParametros(){
         escenarioPrincipal.ventanaParametrosRepBoleta();
     }
+        public void ventanaParametrosRepTec(){
+        escenarioPrincipal.ventanaParametrosRepTecnicos();
+    }
 }
