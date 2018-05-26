@@ -28,7 +28,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <JFXButton fx:id="btnAgregar" layoutX="104.0" layoutY="332.0" onAction="#guardarAsignacion" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #175b87;" text="GUARDAR" textFill="WHITE" />
+      <JFXButton fx:id="btnAgregar" layoutX="104.0" layoutY="332.0" onAction="#validarDatos" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #175b87;" text="GUARDAR" textFill="WHITE" />
       <DatePicker fx:id="fecha" layoutX="129.0" layoutY="54.0" />
       <Label layoutX="89.0" layoutY="59.0" text="Fecha:" />
       <ComboBox fx:id="cmbCliente" layoutX="131.0" layoutY="162.0" prefHeight="25.0" prefWidth="174.0" promptText="--Seleccione--" />

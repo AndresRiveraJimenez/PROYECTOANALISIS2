@@ -63,7 +63,7 @@ public class Principal extends Application{
       this.escenario.getIcons().add(new Image("/org/andres/recursos/icono app.png"));
       this.escenario.initStyle(StageStyle.UNDECORATED);
       this.escenario.centerOnScreen();
-       ventanaDashboardAsig();
+       ventanaSplash();
       this.escenario.show();
     }
     public void cerrar(){

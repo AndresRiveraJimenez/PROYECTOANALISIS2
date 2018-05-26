@@ -44,6 +44,10 @@ public class ControladorParametrosBoletasReporte implements Initializable{
     }
     
         public void reporteClientes(){
+            
+        if(validadFecha()){
+            
+          
         LocalDate fechaInicio = datePicFechaInicio.getValue();
         LocalDate fechaFinal = datePicFechaFinal.getValue();
         if(fechaInicio.isAfter(fechaFinal)){
@@ -60,8 +64,26 @@ public class ControladorParametrosBoletasReporte implements Initializable{
         cerrar();   
         }
         
+        } 
+        
     }
                 public void cerrar(){
         escenarioPrincipal.cerrarModalCrear();
-    }        
+    }     
+    
+    public boolean validadFecha(){
+        if(datePicFechaInicio.getValue() == null){
+             TrayNotification tray = new TrayNotification("ERROR", "Debe ingresar una fecha de inicio", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.POPUP);
+            tray.showAndDismiss(Duration.seconds(1));
+            return false;
+        }else if(datePicFechaFinal.getValue() == null) {
+            TrayNotification tray = new TrayNotification("ERROR", "Debe ingresar una fecha de final", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.POPUP);
+            tray.showAndDismiss(Duration.seconds(1));
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

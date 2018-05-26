@@ -8,9 +8,9 @@ package org.andres.controladores;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -19,12 +19,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.util.Duration;
+import org.andres.bean.Asignaciones;
 import org.andres.bean.Clientes;
 import org.andres.bean.Tecnico;
-import org.andres.bean.Usuario;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
 import tray.animations.AnimationType;
@@ -41,6 +40,8 @@ public class ControladorModificarDashboard implements Initializable{
     @FXML private ComboBox cmbCliente;
     @FXML private TextArea txtDescripcion;
     private int idAsignacion;
+    private Asignaciones asignacion;
+    private Asignaciones asignacionModificar;
     private Principal escenarioPrincipal;
     
     @Override
@@ -51,8 +52,30 @@ public class ControladorModificarDashboard implements Initializable{
 
     public void setIdAsignacion(int idAsignacion) {
         this.idAsignacion = idAsignacion;
+        this.asignacionModificar = buscarAsignacion(idAsignacion);
+        fecha.setValue( asignacionModificar.getFecha().toLocalDate());
+        cmbCliente.setValue( asignacionModificar.getCliente());
+        cmbTecnico.setValue( asignacionModificar.getTecnico());
+        txtDescripcion.setText(asignacionModificar.getDescripcion());
     }
-
+    public Asignaciones buscarAsignacion(int idAsignacionModificar) {
+        Asignaciones resultado = null;
+        try {
+            PreparedStatement procedimiento = (PreparedStatement) Conexion.getInstancia().getConexion().prepareStatement("{call sp_BuscarAsignacion(?)}");
+            procedimiento.setInt(1, idAsignacionModificar);
+            ResultSet asignacion = procedimiento.executeQuery();
+            while (asignacion.next()) {
+                resultado = new Asignaciones(
+                        asignacion.getInt("idAsignacion"), asignacion.getDate("fecha"), asignacion.getString("descripcion"),
+                        new Tecnico(asignacion.getInt("idTecnico"),asignacion.getString("nombreTecnico")), 
+                        new Clientes(asignacion.getInt("idCliente"), asignacion.getString("razonSocial")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+    
 
     public Principal getEscenarioPrincipal() {
         return escenarioPrincipal;
@@ -112,4 +135,25 @@ public class ControladorModificarDashboard implements Initializable{
             ex.printStackTrace();
         }
     }
+ 
+     public void validarDatos(){
+              
+        if (fecha.getValue() == null) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un fecha", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            fecha.requestFocus();
+        }else if(txtDescripcion.getText().isEmpty()){
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una descripcion", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtDescripcion.requestFocus();
+        }else{
+            guardarAsignacion();
+        }
+    }
+    
+ 
+ 
+ 
 }

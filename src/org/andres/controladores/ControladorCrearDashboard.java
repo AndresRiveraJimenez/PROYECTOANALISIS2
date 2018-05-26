@@ -10,7 +10,6 @@ import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -19,12 +18,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.util.Duration;
 import org.andres.bean.Clientes;
 import org.andres.bean.Tecnico;
-import org.andres.bean.Usuario;
 import org.andres.sistema.Principal;
 import org.andresrivera.conexion.Conexion;
 import tray.animations.AnimationType;
@@ -86,7 +83,7 @@ public class ControladorCrearDashboard implements Initializable{
             }
             return FXCollections.observableArrayList(lista);
         }
- public void guardarAsignacion(){
+    public void guardarAsignacion(){
                 CallableStatement  procedimiento;
         try {
             procedimiento = (CallableStatement ) Conexion.getInstancia().getConexion().prepareCall("{call sp_AgregarAsignacion(?,?,?,?)}");
@@ -106,4 +103,53 @@ public class ControladorCrearDashboard implements Initializable{
             ex.printStackTrace();
         }
     }
+ 
+    public void validarDatos(){
+              
+        if (fecha.getValue() == null) {
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar un fecha", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            fecha.requestFocus();
+        }else if(seleccionarItemTecnico()){
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes seleccionar un tecnico", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            cmbTecnico.requestFocus();
+        }else if(seleccionarItemCliente()){
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes seleccionar un cliente", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            cmbCliente.requestFocus();
+        }else if(txtDescripcion.getText().isEmpty()){
+            TrayNotification tray = new TrayNotification("GUARDAR", "Debes ingresar una descripcion", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(1));
+            txtDescripcion.requestFocus();
+        }else{
+            guardarAsignacion();
+        }
+    }
+    
+    
+    public boolean seleccionarItemTecnico() {
+
+        Tecnico tecnico = (Tecnico) cmbTecnico.getValue();
+     
+        if (tecnico == null) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean seleccionarItemCliente() {
+
+        Clientes cliente = (Clientes) cmbCliente.getValue();
+
+        if (cliente == null) {
+            return true;
+        }
+        return false;
+    }
+ 
 }

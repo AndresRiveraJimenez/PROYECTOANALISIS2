@@ -56,7 +56,7 @@
          </font>
       </Label>
       <Separator layoutX="768.0" layoutY="110.0" prefHeight="4.0" prefWidth="328.0" />
-      <Label layoutX="12.0" layoutY="60.0" text="LISTA DE CLIENTES" underline="true">
+      <Label layoutX="12.0" layoutY="60.0" text="LISTA DE ASIGNACIONES" underline="true">
          <font>
             <Font name="Comfortaa Regular" size="14.0" />
          </font>
@@ -70,7 +70,7 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip autoHide="true" text="Agregar Cliente" />
+            <Tooltip autoHide="true" text="Agregar Asignacion" />
          </tooltip>
       </JFXButton>
       <Separator fx:id="separadorUno" layoutX="901.0" layoutY="441.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
@@ -83,7 +83,7 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip autoHide="true" text="Modificar Cliente" />
+            <Tooltip autoHide="true" text="Modificar Asignacion" />
          </tooltip>
       </JFXButton>
       <Separator fx:id="separadorDos" layoutX="966.0" layoutY="441.0" orientation="VERTICAL" prefHeight="38.0" prefWidth="0.0" />
@@ -96,7 +96,7 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip autoHide="true" text="Eliminar Cliente" />
+            <Tooltip autoHide="true" text="Eliminar Asignacion" />
          </tooltip>
       </JFXButton>
       <Label layoutX="805.0" layoutY="158.0" text="Fecha:" />
@@ -105,11 +105,16 @@
       <TextArea fx:id="txtDescripcion" editable="false" layoutX="845.0" layoutY="308.0" prefHeight="115.0" prefWidth="174.0" />
       <Label layoutX="797.0" layoutY="308.0" text="Motivo:" />
       <Label layoutX="893.0" layoutY="511.0" text="Link Dashboard:" />
-      <Hyperlink layoutX="899.0" layoutY="528.0" onAction="#linkDashboard" text="Dashboard" />
+      <Hyperlink layoutX="899.0" layoutY="528.0" onAction="#linkDashboard" text="Dashboard" >
+        <tooltip>
+            <Tooltip autoHide="true" text="Clic" />
+         </tooltip>
+      </Hyperlink>
       <TextField fx:id="txtFecha" editable="false" layoutX="845.0" layoutY="154.0" prefHeight="25.0" prefWidth="174.0" />
       <TextField fx:id="txtTecnico" editable="false" layoutX="847.0" layoutY="208.0" prefHeight="25.0" prefWidth="174.0" />
       <TextField fx:id="txtCliente" editable="false" layoutX="845.0" layoutY="261.0" prefHeight="25.0" prefWidth="174.0" />
       <Label layoutX="822.0" layoutY="124.0" text="ID:" />
       <TextField fx:id="txtIdAsignacion" editable="false" layoutX="844.0" layoutY="120.0" prefHeight="25.0" prefWidth="77.0" />
+      <TextField fx:id="txtSearch" layoutX="543.0" layoutY="55.0" prefHeight="25.0" prefWidth="213.0" promptText="Buscar..." />
    </children>
 </AnchorPane>

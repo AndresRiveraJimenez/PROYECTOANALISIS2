@@ -12,7 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Bryan/Documents/NetBeansProjects/PROYECTOANALISIS2/src/org/andres/controladores/ControladorModificarBoleta.java</file>
+            <file>file:/C:/Users/Bryan/Documents/NetBeansProjects/PROYECTOANALISIS2/src/org/andres/controladores/ControladorVentanaPrincipal.java</file>
+            <file>file:/C:/Users/Bryan/Documents/NetBeansProjects/PROYECTOANALISIS2/src/org/andres/controladores/ControladorParametrosBoletasReporte.java</file>
+            <file>file:/C:/Users/Bryan/Documents/NetBeansProjects/PROYECTOANALISIS2/src/org/andres/reportes/GenerarReporte.java</file>
         </group>
     </open-files>
 </project-private>

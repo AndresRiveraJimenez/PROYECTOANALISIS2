@@ -16,12 +16,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,7 +31,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import org.andres.bean.Asignaciones;
 import org.andres.bean.Clientes;
-import org.andres.bean.Tecnico;
 import org.andres.bean.Usuario;
 import org.andres.recursos.FxDialogs;
 import org.andres.sistema.Principal;
@@ -60,7 +59,9 @@ public class ControladorDashboardAsignaciones implements Initializable{
     @FXML private TextField txtTecnico;
     @FXML private TextField txtCliente;
     @FXML private TextArea txtDescripcion;
-    
+    @FXML private TextField txtSearch;
+
+        
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mostrarDatos();
@@ -87,8 +88,14 @@ public class ControladorDashboardAsignaciones implements Initializable{
     public void crearAsignacion(){
         escenarioPrincipal.ventanaCrearAsignacion();
     }
-    public void modificarAsignacion(){
-        escenarioPrincipal.ventanaModificarAsignacion(Integer.valueOf(txtIdAsignacion.getText()));
+    public void modificarAsignacion() {
+        if (txtIdAsignacion.getText().isEmpty()) {
+            TrayNotification tray = new TrayNotification("MODIFICAR", "Debe seleccionar una Asgnacion", NotificationType.ERROR);
+            tray.setAnimationType(AnimationType.POPUP);
+            tray.showAndDismiss(Duration.seconds(1));
+        } else {
+            escenarioPrincipal.ventanaModificarAsignacion(Integer.valueOf(txtIdAsignacion.getText()));
+        }
     }
     public void linkDashboard() throws URISyntaxException, IOException{
         Desktop.getDesktop().browse(new URI("http://localhost:59102/Asignaciones/Index"));
@@ -115,16 +122,24 @@ public class ControladorDashboardAsignaciones implements Initializable{
     public void mostrarDatos(){
          tblAsignaciones.setItems(getListaAsignaciones());
          colIdAsignacion.setCellValueFactory(new PropertyValueFactory<Asignaciones, Integer>("idAsignacion"));
-        colFecha.setCellValueFactory(new PropertyValueFactory<Asignaciones, Date>("fecha"));
+        colFecha.setCellValueFactory(new PropertyValueFactory<Asignaciones, Date>("fechaString"));
         colTecnico.setCellValueFactory(new PropertyValueFactory<Asignaciones,String>("nombreTecnico"));
         colRazonSocial.setCellValueFactory(new PropertyValueFactory<Asignaciones,String>("razonSocial"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory<Clientes,String>("Descripcion"));
+   
+        
+        txtSearch.textProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                filtroAsigacacionBuscar((String) oldValue, (String) newValue);
+            }
+        });
     }
         public void clienteSeleccionado(){
         if(tblAsignaciones.getSelectionModel().getSelectedItem()!= null){
             Asignaciones asignacion = (Asignaciones)tblAsignaciones.getSelectionModel().getSelectedItem();
             txtIdAsignacion.setText(String.valueOf(asignacion.getIdAsignacion()));
-            txtFecha.setText(String.valueOf(asignacion.getFecha()));
+            txtFecha.setText(asignacion.getFechaString());
             txtTecnico.setText(asignacion.getNombreTecnico());
             txtCliente.setText(asignacion.getRazonSocial());
             txtDescripcion.setText(asignacion.getDescripcion());
@@ -165,4 +180,20 @@ public class ControladorDashboardAsignaciones implements Initializable{
                  }
             }
         }
+             
+    public void filtroAsigacacionBuscar(String oldValue, String newValue) {
+        ObservableList<Asignaciones> filteredList = FXCollections.observableArrayList();
+        if (txtSearch == null || (newValue.length() < oldValue.length()) || newValue == null) {
+            tblAsignaciones.setItems(getListaAsignaciones());
+        } else {
+            newValue = newValue.toUpperCase();
+            for (Asignaciones asignacion : tblAsignaciones.getItems()) {
+                String nombre = asignacion.getNombreTecnico();
+                if (nombre.toUpperCase().contains(newValue)) {
+                    filteredList.add(asignacion);
+                }
+            }
+            tblAsignaciones.setItems(filteredList);
+        }
+    }
 }

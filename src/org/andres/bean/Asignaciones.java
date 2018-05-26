@@ -6,6 +6,7 @@
 package org.andres.bean;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -17,8 +18,18 @@ public class Asignaciones {
     private String nombreTecnico;
     private String razonSocial;
     private String descripcion;
+    private Tecnico tecnico;
+    private Clientes cliente;
 
     public Asignaciones() {
+    }
+
+    public Asignaciones(int idAsignacion, Date fecha,String descripcion, Tecnico tecnico, Clientes cliente) {
+        this.idAsignacion = idAsignacion;
+        this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.tecnico = tecnico;
+        this.cliente = cliente;
     }
 
     public Asignaciones(int idAsignacion, Date fecha, String nombreTecnico, String razonSocial, String descripcion) {
@@ -39,6 +50,10 @@ public class Asignaciones {
 
     public Date getFecha() {
         return fecha;
+    }
+    public String getFechaString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(this.fecha); 
     }
 
     public void setFecha(Date fecha) {
@@ -69,5 +84,22 @@ public class Asignaciones {
         this.descripcion = descripcion;
     }
 
+    public Tecnico getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(Tecnico tecnico) {
+        this.tecnico = tecnico;
+    }
+
+    public Clientes getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Clientes cliente) {
+        this.cliente = cliente;
+    }
+
+    
     
 }
